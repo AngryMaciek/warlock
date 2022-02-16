@@ -40,6 +40,6 @@ jobs:
 
       - name: Run mock pipeline
         shell: bash -l {0}
-        run: snakemake --config workflow/config/config.yml
+        run: snakemake --configfile workflow/config/config.yml
 
 ...
