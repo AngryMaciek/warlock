@@ -38,6 +38,10 @@ jobs:
           conda info -a
           conda list
 
+      - name: compiler
+        shell: bash -l {0}
+        run: which g++
+
       - name: Compile demon
         shell: bash -l {0}
         run: g++ -o demon workflow/src/demon.cpp -lm
