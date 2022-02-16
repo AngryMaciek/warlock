@@ -12,6 +12,6 @@
 
 # Path for the output directory
 # (absolute path is required)
-outdir: ""
+outdir: "."
 
 ...
