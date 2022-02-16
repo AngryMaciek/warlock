@@ -1,0 +1,45 @@
+###############################################################################
+#
+#   Software to be installed in the main environment
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 15-02-2022
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+name: ci
+
+on: push
+
+jobs:
+
+  install:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup miniconda & conda env
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: 4.7.12
+          auto-update-conda: false
+          environment-file: environment.yml
+          activate-environment: demon-runner
+          auto-activate-base: false
+
+      - name: Display all miniconda & env info
+        shell: bash -l {0}
+        run: |
+          conda info -a
+          conda list
+
+      - name: Run mock pipeline
+        shell: bash -l {0}
+        run: bash demon-runner.sh --configfile workflow/config/config.yml --environment local
+
+...
