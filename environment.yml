@@ -17,6 +17,7 @@
     - conda-forge
 
   dependencies:
+    - boost-cpp=1.77.0
     - graphviz=2.50.0
     - python=3.10.2
     - snakemake=6.15.5
