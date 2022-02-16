@@ -38,10 +38,6 @@ jobs:
           conda info -a
           conda list
 
-      - name: Test bin exec
-        shell: bash -l {0}
-        run: ./workflow/bin/demon
-
       - name: Run mock pipeline
         shell: bash -l {0}
         run: bash demon-runner.sh --configfile workflow/config/config.yml --environment local
