@@ -1,0 +1,28 @@
+name: install
+
+on: push
+
+jobs:
+
+  pipeline-exec:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup miniconda & conda env
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: 4.11.0
+          auto-update-conda: false
+          environment-file: environment.yml
+          activate-environment: demon-runner
+          auto-activate-base: false
+
+      - name: Display all miniconda & env info
+        shell: bash -l {0}
+        run: |
+          conda info -a
+          conda list
