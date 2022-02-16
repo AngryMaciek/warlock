@@ -40,7 +40,7 @@ jobs:
 
       - name: Compile demon
         shell: bash -l {0}
-        run: g++ -o demon src/demon.cpp -lm
+        run: g++ -o demon workflow/src/demon.cpp -lm
 
       - name: Run mock pipeline
         shell: bash -l {0}
