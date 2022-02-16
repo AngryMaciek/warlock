@@ -9,13 +9,13 @@
 #
 ###############################################################################
 ---
-name: install
+name: ci
 
 on: push
 
 jobs:
 
-  pipeline-exec:
+  install:
     runs-on: ubuntu-20.04
 
     steps:
