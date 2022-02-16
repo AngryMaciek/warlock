@@ -1,0 +1,19 @@
+###############################################################################
+#
+#   Software to be installed in the main environment
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 15-02-2022
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+snakefile: "workflow/Snakefile"
+cores: 1
+printshellcmds: true
+rerun-incomplete: true
+keep-going: true
+verbose: true
+
+...
