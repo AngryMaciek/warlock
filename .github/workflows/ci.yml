@@ -38,9 +38,13 @@ jobs:
           conda info -a
           conda list
 
-      - name: Compile demon
+      - name: Print compiler
         shell: bash -l {0}
         run: which g++
+
+      - name: Compile demon
+        shell: bash -l {0}
+        run: g++ workflow/src/demon.cpp -o workflow/bin/demon -lm
 
       - name: Run mock pipeline
         shell: bash -l {0}
