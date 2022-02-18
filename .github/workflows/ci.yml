@@ -42,6 +42,10 @@ jobs:
         shell: bash -l {0}
         run: which g++
 
+      - name: pwd
+        shell: bash -l {0}
+        run: echo $PWD
+
       - name: Compile demon
         shell: bash -l {0}
         run: g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
