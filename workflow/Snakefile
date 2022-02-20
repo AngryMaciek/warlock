@@ -56,33 +56,9 @@ def CreateConfigFilesCrossProduct():
             ),
             exist_ok=True
         )
-        os.system("cp " + config["workflow_repo_path"] + "/resources/template-config.dat " + config["workflow_analysis_outdir"]+"/simulations/"+_+"/config.dat" )
-
-
-def aggregate_input(wildcards):
-    """Collect output files after demon for a dynamic number of simulations;
-    implements aggregation after checkpoint-based graph re-evaluation.
-
-    Args:
-        wildcards (snakemake wildcards): internal snakemake wildcards
-        objects for this workflow; required for snakemake
-
-    Returns:
-        list: output files of a demon simulation
-    """
-    checkpoint_output = checkpoints.prepare_configfiles.get().output[0]
-    simulation_dirs = glob.glob(
-        checkpoint_output + os.path.sep + "*" + os.path.sep
-    )
-    return [os.path.join(_, "output.dat") for _ in simulation_dirs]
-
-
-rule all:
-    """
-    Target rule gathering final output of the workflow.
-    """
-    input:
-        aggregate_input
+        os.system("cp " + config["workflow_repo_path"] + \
+        "/resources/template-config.dat " + config["workflow_analysis_outdir"] + \
+        "/simulations/"+_+"/config.dat" )
 
 
 checkpoint prepare_configfiles:
@@ -213,3 +189,29 @@ rule run_demon:
         1> {log.LOG_local_stdout} \
         2> {log.LOG_local_stderr}
         """
+
+
+def aggregate_input(wildcards):
+    """Collect output files after demon for a dynamic number of simulations;
+    implements aggregation after checkpoint-based graph re-evaluation.
+
+    Args:
+        wildcards (snakemake wildcards): internal snakemake wildcards
+        objects for this workflow; required for snakemake
+
+    Returns:
+        list: output files of a demon simulation
+    """
+    checkpoint_output = checkpoints.prepare_configfiles.get().output[0]
+    simulation_dirs = glob.glob(
+        checkpoint_output + os.path.sep + "*" + os.path.sep
+    )
+    return [os.path.join(_, "output.dat") for _ in simulation_dirs]
+
+
+rule all:
+    """
+    Target rule gathering final output of the workflow.
+    """
+    input:
+        aggregate_input
