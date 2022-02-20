@@ -9,36 +9,207 @@
 #
 ##############################################################################
 
-# import required modules/packages
+
+# import required modules/packages/functions
+import glob
+from math import prod
 import os
 
-# define local rules
-localrules: all, mock
+
+# define always local rules
+localrules: all, prepare_configfiles
+
+
+# before the workflow starts: create the main outdir
+onstart:
+    os.makedirs(
+        config["workflow_analysis_outdir"],
+        exist_ok=True
+    )
+
+
+# after workflow sucess: clean snakemake timestamp
+onsuccess:
+    os.remove(
+        os.path.join(
+            config["workflow_analysis_outdir"],
+            "simulations",
+            ".snakemake_timestamp"
+        )
+    )
+
+
+def CreateConfigFilesCrossProduct():
+    """_summary_
+    """
+    demon_params = [k for k in list(config.keys()) if k.startswith("demon_")]
+    variable_params = [k for k in demon_params if type(config[k]) is list]
+    N = prod([len(config[k]) for k in variable_params])
+    hexnames = [hex(_).split("x")[-1].upper().rjust(4, "0") for _ in range(N)]
+    # mock:
+    for _ in hexnames:
+        os.makedirs(
+            os.path.join(
+                config["workflow_analysis_outdir"],
+                "simulations",
+                _
+            ),
+            exist_ok=True
+        )
+        os.system("cp " + config["workflow_repo_path"] + "/resources/template-config.dat " + config["workflow_analysis_outdir"]+"/simulations/"+_+"/config.dat" )
+
+
+def aggregate_input(wildcards):
+    """Collect output files after demon for a dynamic number of simulations;
+    implements aggregation after checkpoint-based graph re-evaluation.
+
+    Args:
+        wildcards (snakemake wildcards): internal snakemake wildcards
+        objects for this workflow; required for snakemake
+
+    Returns:
+        list: output files of a demon simulation
+    """
+    checkpoint_output = checkpoints.prepare_configfiles.get().output[0]
+    simulation_dirs = glob.glob(
+        checkpoint_output + os.path.sep + "*" + os.path.sep
+    )
+    return [os.path.join(_, "output.dat") for _ in simulation_dirs]
+
 
 rule all:
     """
-    Target rule with final output of the workflow
+    Target rule gathering final output of the workflow.
     """
     input:
-        TXT_echo = expand(
+        aggregate_input
+
+
+checkpoint prepare_configfiles:
+    """
+    Prepare separate simulation config files based on the main workflow config.
+    """
+    output:
+        DIR_simulations_outdir = directory(
             os.path.join(
-                "{outdir}",
-                "echo.txt"
-            ),
-            outdir = config["outdir"]
+                config["workflow_analysis_outdir"],
+                "simulations"
+            )
         )
 
-rule mock:
+    params:
+        DAT_config_template = os.path.join(
+                config["workflow_repo_path"],
+                "resources",
+                "template-config.dat"
+        ),
+        LOG_cluster_log = os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "prepare_configfiles.cluster.log"
+        )
+
+    threads: 1
+
+    log:
+        LOG_local_stdout = os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "prepare_configfiles.stdout.log"
+        ),
+        LOG_local_stderr = os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "prepare_configfiles.stderr.log"
+        )
+
+    benchmark:
+        os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "prepare_configfiles.benchmark.log"
+        )
+
+    run:
+        with open(log.LOG_local_stderr, "w") as errlogfile:
+            try:
+                os.makedirs(
+                    os.path.join(
+                        output.DIR_simulations_outdir
+                    )
+                )
+                CreateConfigFilesCrossProduct()
+            except Exception:
+                traceback.print_exc(file = errlogfile)
+                raise Exception(
+                    "Workflow error at rule: prepare_configfiles"
+                )
+
+
+rule run_demon:
     """
-    Mock rule
-    """     
+    Run demon simulations in parallel for every config separately.
+    """
+    input:
+        BIN_demon = os.path.join(
+            config["workflow_repo_path"],
+            "workflow",
+            "bin",
+            "demon"
+        ),
+        DAT_config = os.path.join(
+            config["workflow_analysis_outdir"],
+            "simulations",
+            "{subdir}",
+            "config.dat"
+        )
+
     output:
-        TXT_echo = os.path.join(
-            "{outdir}",
-            "echo.txt"
+        DAT_simulation_output = os.path.join(
+            config["workflow_analysis_outdir"],
+            "simulations",
+            "{subdir}",
+            "output.dat"
+        )
+
+    params:
+        DIR_simulation_subdir = os.path.join(
+            config["workflow_analysis_outdir"],
+            "simulations",
+            "{subdir}"
+        ),
+        LOG_cluster_log = os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "run_demon.{subdir}.cluster.log"
+        )
+
+    threads: 1
+
+    log:
+        LOG_local_stdout = os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "run_demon.{subdir}.stdout"
+        ),
+        LOG_local_stderr = os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "run_demon.{subdir}.stderr"
+        )
+
+    benchmark:
+        os.path.join(
+            config["workflow_analysis_outdir"],
+            "log",
+            "run_demon.{subdir}.benchmark.log"
         )
 
     shell:
         """
-        echo HELLOWORLD 1> {output.TXT_echo}
+        {input.BIN_demon} \
+        {params.DIR_simulation_subdir} \
+        config.dat \
+        1> {log.LOG_local_stdout} \
+        2> {log.LOG_local_stderr}
         """

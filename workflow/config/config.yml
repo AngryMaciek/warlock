@@ -10,8 +10,20 @@
 ###############################################################################
 ---
 
+### WORKFLOW PARAMETERS ###
+
+# Path to the cloned repository
+# (absolute path is required)
+workflow_repo_path: "/Users/maciek/demon-runner"
+
 # Path for the output directory
 # (absolute path is required)
-outdir: "."
+workflow_analysis_outdir: "output"
+
+### DEMON PARAMETERS ###
+
+demon_param1: [1,2]
+
+demon_param2: "abc"
 
 ...
