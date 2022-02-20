@@ -40,7 +40,7 @@ jobs:
 
       - name: Print compiler path
         shell: bash -l {0}
-        run: echo $PWD
+        run: which g++
 
       - name: Compile demon
         shell: bash -l {0}

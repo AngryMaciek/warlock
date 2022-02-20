@@ -14,11 +14,13 @@
 
 # Path to the cloned repository
 # (absolute path is required)
-workflow_repo_path: "/Users/maciek/demon-runner"
+#workflow_repo_path: "/Users/maciek/demon-runner"
+workflow_repo_path: "/home/runner/work/demon-runner/demon-runner"
 
 # Path for the output directory
 # (absolute path is required)
-workflow_analysis_outdir: "/Users/maciek/demon-runner/output"
+#workflow_analysis_outdir: "/Users/maciek/demon-runner/output"
+workflow_analysis_outdir: "/home/runner/work/demon-runner/demon-runner"
 
 ### DEMON PARAMETERS ###
 
