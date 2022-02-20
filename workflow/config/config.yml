@@ -18,7 +18,7 @@ workflow_repo_path: "/Users/maciek/demon-runner"
 
 # Path for the output directory
 # (absolute path is required)
-workflow_analysis_outdir: "output"
+workflow_analysis_outdir: "/Users/maciek/demon-runner/output"
 
 ### DEMON PARAMETERS ###
 

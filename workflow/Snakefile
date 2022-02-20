@@ -14,6 +14,7 @@
 import glob
 from math import prod
 import os
+import traceback
 
 
 # define always local rules
@@ -39,8 +40,12 @@ onsuccess:
     )
 
 
-def CreateConfigFilesCrossProduct():
+def CreateConfigFilesCrossProduct(wildcards):
     """_summary_
+
+    Args:
+        wildcards (snakemake wildcards): internal snakemake wildcards
+        objects for this workflow; required for snakemake
     """
     demon_params = [k for k in list(config.keys()) if k.startswith("demon_")]
     variable_params = [k for k in demon_params if type(config[k]) is list]
@@ -50,14 +55,14 @@ def CreateConfigFilesCrossProduct():
     for _ in hexnames:
         os.makedirs(
             os.path.join(
-                config["workflow_analysis_outdir"],
+                wildcards.outdir,
                 "simulations",
                 _
             ),
             exist_ok=True
         )
         os.system("cp " + config["workflow_repo_path"] + \
-        "/resources/template-config.dat " + config["workflow_analysis_outdir"] + \
+        "/resources/template-config.dat " + wildcards.outdir + \
         "/simulations/"+_+"/config.dat" )
 
 
@@ -68,7 +73,7 @@ checkpoint prepare_configfiles:
     output:
         DIR_simulations_outdir = directory(
             os.path.join(
-                config["workflow_analysis_outdir"],
+                "{outdir}",
                 "simulations"
             )
         )
@@ -80,7 +85,7 @@ checkpoint prepare_configfiles:
                 "template-config.dat"
         ),
         LOG_cluster_log = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
             "prepare_configfiles.cluster.log"
         )
@@ -89,19 +94,19 @@ checkpoint prepare_configfiles:
 
     log:
         LOG_local_stdout = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
             "prepare_configfiles.stdout.log"
         ),
         LOG_local_stderr = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
             "prepare_configfiles.stderr.log"
         )
 
     benchmark:
         os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
             "prepare_configfiles.benchmark.log"
         )
@@ -114,7 +119,7 @@ checkpoint prepare_configfiles:
                         output.DIR_simulations_outdir
                     )
                 )
-                CreateConfigFilesCrossProduct()
+                CreateConfigFilesCrossProduct(wildcards)
             except Exception:
                 traceback.print_exc(file = errlogfile)
                 raise Exception(
@@ -134,51 +139,51 @@ rule run_demon:
             "demon"
         ),
         DAT_config = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "simulations",
-            "{subdir}",
+            "{simID}",
             "config.dat"
         )
 
     output:
         DAT_simulation_output = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "simulations",
-            "{subdir}",
+            "{simID}",
             "output.dat"
         )
 
     params:
         DIR_simulation_subdir = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "simulations",
-            "{subdir}"
+            "{simID}"
         ),
         LOG_cluster_log = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
-            "run_demon.{subdir}.cluster.log"
+            "run_demon.{simID}.cluster.log"
         )
 
     threads: 1
 
     log:
         LOG_local_stdout = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
-            "run_demon.{subdir}.stdout"
+            "run_demon.{simID}.stdout"
         ),
         LOG_local_stderr = os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
-            "run_demon.{subdir}.stderr"
+            "run_demon.{simID}.stderr"
         )
 
     benchmark:
         os.path.join(
-            config["workflow_analysis_outdir"],
+            "{outdir}",
             "log",
-            "run_demon.{subdir}.benchmark.log"
+            "run_demon.{simID}.benchmark.log"
         )
 
     shell:
@@ -202,7 +207,9 @@ def aggregate_input(wildcards):
     Returns:
         list: output files of a demon simulation
     """
-    checkpoint_output = checkpoints.prepare_configfiles.get().output[0]
+    checkpoint_output = checkpoints.prepare_configfiles.get(
+        outdir=config["workflow_analysis_outdir"]
+    ).output[0]
     simulation_dirs = glob.glob(
         checkpoint_output + os.path.sep + "*" + os.path.sep
     )
