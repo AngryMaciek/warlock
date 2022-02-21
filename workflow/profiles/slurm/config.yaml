@@ -1,0 +1,23 @@
+###############################################################################
+#
+#   Snakemake profile for a local workflow execution
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 15-02-2022
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+jobscript: "workflow/profiles/slurm/slurm-jobscript.sh"
+cluster: "workflow/profiles/slurm/slurm-submit.py"
+cluster-status: "workflow/profiles/slurm/slurm-status.py"
+snakefile: "workflow/Snakefile"
+cores: 128
+jobs: 128
+printshellcmds: true
+rerun-incomplete: true
+keep-going: true
+verbose: true
+
+...
