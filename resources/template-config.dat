@@ -2,46 +2,46 @@ parameters
 {
     spatial_structure
     {
-        log2_deme_carrying_capacity 9
+        log2_deme_carrying_capacity {{log2_deme_carrying_capacity}}
     }
     dispersal
     {
-        migration_type 0
-        init_migration_rate 2e-03
-        migration_edge_only 1
-        migration_rate_scales_with_K 1
+        migration_type {{migration_type}}
+        init_migration_rate {{init_migration_rate}}
+        migration_edge_only {{migration_edge_only}}
+        migration_rate_scales_with_K {{migration_rate_scales_with_K}}
     }
     mutation_rates
     {
-        mu_driver_birth 1e-05
-        mu_passenger 0.1
-        mu_driver_migration 0
-        passenger_pop_threshold -1
+        mu_driver_birth {{mu_driver_birth}}
+        mu_passenger {{mu_passenger}}
+        mu_driver_migration {{mu_driver_migration}}
+        passenger_pop_threshold {{passenger_pop_threshold}}
     }
     fitness_effects
     {
-        normal_birth_rate 0.9
-        baseline_death_rate 0
-        s_driver_birth 0.1
-        s_passenger 0
-        s_driver_migration 0
-        max_relative_birth_rate 10
-        max_relative_migration_rate 10
+        normal_birth_rate {{normal_birth_rate}}
+        baseline_death_rate {{baseline_death_rate}}
+        s_driver_birth {{s_driver_birth}}
+        s_passenger {{s_passenger}}
+        s_driver_migration {{s_driver_migration}}
+        max_relative_birth_rate {{max_relative_birth_rate}}
+        max_relative_migration_rate {{max_relative_migration_rate}}
     }
     non_biological_parameters
     {
-        init_pop 1
-        matrix_max -1
-        max_pop 1000000
-        max_time 86400
-        max_generations 200
-        seed 10
-        write_grid 0
-        write_clones_file 0
-        write_demes_file 0
-        record_matrix 0
-        write_phylo 0
-        calculate_total_diversity 0
-        biopsy_size_per_sample 100
+        init_pop {{init_pop}}
+        matrix_max {{matrix_max}}
+        max_pop {{max_pop}}
+        max_time {{max_time}}
+        max_generations {{max_generations}}
+        seed {{seed}}
+        write_grid {{write_grid}}
+        write_clones_file {{write_clones_file}}
+        write_demes_file {{write_demes_file}}
+        record_matrix {{record_matrix}}
+        write_phylo {{write_phylo}}
+        calculate_total_diversity {{calculate_total_diversity}}
+        biopsy_size_per_sample {{biopsy_size_per_sample}}
     }
 }
