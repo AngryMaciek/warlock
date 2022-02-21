@@ -12,9 +12,11 @@
 
 # import required modules/packages/functions
 import glob
+import itertools
 from math import prod
 import os
 import traceback
+from jinja2 import Template
 
 
 # define always local rules
@@ -40,30 +42,53 @@ onsuccess:
     )
 
 
-def CreateConfigFilesCrossProduct(wildcards):
-    """_summary_
+def CreateConfigFilesCrossProduct(wildcards, config_template):
+    """Render demon config template with the parameters from YAML;
+    implement Cartesian product of all possible parameters' options.
 
     Args:
         wildcards (snakemake wildcards): internal snakemake wildcards
         objects for this workflow; required for snakemake
     """
+
     demon_params = [k for k in list(config.keys()) if k.startswith("demon_")]
     variable_params = [k for k in demon_params if type(config[k]) is list]
+    list_of_lists = [config[key] for key in variable_params]
+    cartesian_products = [_ for _ in itertools.product(*list_of_lists)]
     N = prod([len(config[k]) for k in variable_params])
     hexnames = [hex(_).split("x")[-1].upper().rjust(4, "0") for _ in range(N)]
-    # mock:
-    for _ in hexnames:
+
+    for dirname, c_prod in zip(hexnames, cartesian_products):
+
+        # create simulation dirs:
         os.makedirs(
             os.path.join(
                 wildcards.outdir,
                 "simulations",
-                _
+                dirname
             ),
-            exist_ok=True
+            exist_ok=False
         )
-        os.system("cp " + config["workflow_repo_path"] + \
-        "/resources/template-config.dat " + wildcards.outdir + \
-        "/simulations/"+_+"/config.dat" )
+
+        # render the config dict first
+        config_copy = dict(config) # deep copy of a Python dict
+        for _ in range(len(variable_params)):
+            config_copy[variable_params[_]] = c_prod[_]
+
+        # then render the DAT template
+        with open(config_template) as f:
+            template = Template(f.read())
+        rendered = template.render(config_copy)
+
+        # prepare expected config for demon
+        c_path = os.path.join(
+            wildcards.outdir,
+            "simulations",
+            dirname,
+            "config.dat"
+        )
+        with open(c_path, "w") as f:
+            f.write(rendered)
 
 
 checkpoint prepare_configfiles:
@@ -119,7 +144,10 @@ checkpoint prepare_configfiles:
                         output.DIR_simulations_outdir
                     )
                 )
-                CreateConfigFilesCrossProduct(wildcards)
+                CreateConfigFilesCrossProduct(
+                    wildcards,
+                    params.DAT_config_template
+                )
             except Exception:
                 traceback.print_exc(file = errlogfile)
                 raise Exception(

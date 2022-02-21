@@ -2,46 +2,46 @@ parameters
 {
     spatial_structure
     {
-        log2_deme_carrying_capacity {{log2_deme_carrying_capacity}}
+        log2_deme_carrying_capacity {{demon_log2_deme_carrying_capacity}}
     }
     dispersal
     {
-        migration_type {{migration_type}}
-        init_migration_rate {{init_migration_rate}}
-        migration_edge_only {{migration_edge_only}}
-        migration_rate_scales_with_K {{migration_rate_scales_with_K}}
+        migration_type {{demon_migration_type}}
+        init_migration_rate {{demon_init_migration_rate}}
+        migration_edge_only {{demon_migration_edge_only}}
+        migration_rate_scales_with_K {{demon_migration_rate_scales_with_K}}
     }
     mutation_rates
     {
-        mu_driver_birth {{mu_driver_birth}}
-        mu_passenger {{mu_passenger}}
-        mu_driver_migration {{mu_driver_migration}}
-        passenger_pop_threshold {{passenger_pop_threshold}}
+        mu_driver_birth {{demon_mu_driver_birth}}
+        mu_passenger {{demon_mu_passenger}}
+        mu_driver_migration {{demon_mu_driver_migration}}
+        passenger_pop_threshold {{demon_passenger_pop_threshold}}
     }
     fitness_effects
     {
-        normal_birth_rate {{normal_birth_rate}}
-        baseline_death_rate {{baseline_death_rate}}
-        s_driver_birth {{s_driver_birth}}
-        s_passenger {{s_passenger}}
-        s_driver_migration {{s_driver_migration}}
-        max_relative_birth_rate {{max_relative_birth_rate}}
-        max_relative_migration_rate {{max_relative_migration_rate}}
+        normal_birth_rate {{demon_normal_birth_rate}}
+        baseline_death_rate {{demon_baseline_death_rate}}
+        s_driver_birth {{demon_s_driver_birth}}
+        s_passenger {{demon_s_passenger}}
+        s_driver_migration {{demon_s_driver_migration}}
+        max_relative_birth_rate {{demon_max_relative_birth_rate}}
+        max_relative_migration_rate {{demon_max_relative_migration_rate}}
     }
     non_biological_parameters
     {
-        init_pop {{init_pop}}
-        matrix_max {{matrix_max}}
-        max_pop {{max_pop}}
-        max_time {{max_time}}
-        max_generations {{max_generations}}
-        seed {{seed}}
-        write_grid {{write_grid}}
-        write_clones_file {{write_clones_file}}
-        write_demes_file {{write_demes_file}}
-        record_matrix {{record_matrix}}
-        write_phylo {{write_phylo}}
-        calculate_total_diversity {{calculate_total_diversity}}
-        biopsy_size_per_sample {{biopsy_size_per_sample}}
+        init_pop {{demon_init_pop}}
+        matrix_max {{demon_matrix_max}}
+        max_pop {{demon_max_pop}}
+        max_time {{demon_max_time}}
+        max_generations {{demon_max_generations}}
+        seed {{demon_seed}}
+        write_grid {{demon_write_grid}}
+        write_clones_file {{demon_write_clones_file}}
+        write_demes_file {{demon_write_demes_file}}
+        record_matrix {{demon_record_matrix}}
+        write_phylo {{demon_write_phylo}}
+        calculate_total_diversity {{demon_calculate_total_diversity}}
+        biopsy_size_per_sample {{demon_biopsy_size_per_sample}}
     }
 }
