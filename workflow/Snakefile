@@ -108,11 +108,6 @@ checkpoint prepare_configfiles:
                 config["workflow_repo_path"],
                 "resources",
                 "template-config.dat"
-        ),
-        LOG_cluster_log = os.path.join(
-            "{outdir}",
-            "log",
-            "prepare_configfiles.cluster.log"
         )
 
     threads: 1
