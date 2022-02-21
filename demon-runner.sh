@@ -105,11 +105,13 @@ case "$ENV" in
     local)
         snakemake \
             --configfile="$CONFIGFILE" \
-            --profile="workflow/profiles/local"
+            --profile="workflow/profiles/local" \
+            all
         ;;
     slurm)
         snakemake \
             --configfile="$CONFIGFILE" \
-            --profile="workflow/profiles/slurm"
+            --profile="workflow/profiles/slurm" \
+            all
         ;;
 esac
