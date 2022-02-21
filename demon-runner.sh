@@ -46,6 +46,9 @@ if printf '%s\n' "$@" | grep -q '^--help$'; then
     echo "  Environment to execute the workflow in:"
     echo "  * local = execution on the local machine."
     echo "  * slurm = slurm cluster support."
+    echo ""
+    echo "  -n/--cores {XXX} (OPTIONAL)"
+    echo "  Number of cores available for the workflow."
     exit 0
 fi
 
@@ -62,6 +65,11 @@ do
             ;;
         -e|--environment)
             ENV="$2"
+            shift # past argument
+            shift # past value
+            ;;
+        -n|--cores)
+            CORES="$2"
             shift # past argument
             shift # past value
             ;;
@@ -100,18 +108,25 @@ if [ "$ENV" != "local" ] && [ "$ENV" != "slurm" ]; then
     exit 1
 fi
 
+# keep default number of cores?
+if [ -z "$CORES" ]; then
+    CORES=1
+fi
+
 # select a proper smk profile based on the command line args
 case "$ENV" in
     local)
         snakemake \
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/local" \
+            --cores="$CORES" \
             all
         ;;
     slurm)
         snakemake \
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/slurm" \
+            --cores="$CORES" \
             all
         ;;
 esac
