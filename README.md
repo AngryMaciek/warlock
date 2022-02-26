@@ -77,9 +77,38 @@ Additionally, please notice that two absolute paths are required to be set in th
 
 ## Execution
 
+This workflow should be executed via a top-level bash script: `demon-runner.sh` which has the following description:
+```
+This is the main script to call the demon-runner workflow.
+Available options:
+
+  -c/--configfile {XXX} (REQUIRED)
+  Path to the snakemake config file.
+
+  -e/--environment {local/slurm} (REQUIRED)
+  Environment to execute the workflow in:
+  * local = execution on the local machine.
+  * slurm = slurm cluster support.
+
+  -n/--cores {XXX} (OPTIONAL)
+  Number of cores available for the workflow. Default = 1
+```
+
 ### Local
 
+Example command for a local workflow execution:
+```
+bash demon-runner.sh --configfile workflow/config/config.yml --environment local
+```
+
 ### SLURM cluster
+
+Example command for a cluster-supported workflow execution:
+```
+bash demon-runner.sh --configfile workflow/config/config.yml --environment slurm
+```
+
+Please note that, depending on the complexity of the simulations, it might be required to adjust parameters for cluster jobs. If the expected required resources (memory or computation time) are high please adjust `time` and `mem` fields in the cluster submission configuration file, located at: [`/workflow/profiles/slurm/slurm-config.json`](/workflow/profiles/slurm/slurm-config.json).
 
 ## Output
 
