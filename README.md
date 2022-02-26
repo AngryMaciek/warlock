@@ -9,6 +9,25 @@ The following repository encapsulates _demon_ into an automated and reproducible
 
 ## Installation
 
+**The workflow is designed to run on Linux-based systems.**  
+We have prepared a dedicated [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) recipe which will contain all prerequisites required to execute the workflow. Thus Anaconda/Miniconda package manager is a natural dependency (see [Appendix A](#appendix-a-miniconda-installation) for installation instructions.)
+
+1. Clone the repository and navigate inside that directory
+   ```
+   git clone https://github.com/AngryMaciek/demon-runner.git
+   cd demon-runner
+   ```
+2. Create and activate conda environment
+   ```
+   conda env create
+   conda activate demon-runner
+   ```
+3. Compile _demon_
+   ```
+   g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
+   ```
+   _(assuming here that `/usr/share/miniconda3` is a path to your installation of the Miniconda package manager, please adjust if required)_
+
 ## Configuration
 
 Original configuration file for _demon_ sets the following model parameters:
@@ -65,3 +84,12 @@ Additionally, please notice that two absolute paths are required to be set in th
 ## Output
 
 ## Publications
+
+## Appendix A: Miniconda installation
+
+To install the latest version of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) on a Linux system please execute:
+```
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source .bashrc
+```
