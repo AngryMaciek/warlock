@@ -112,6 +112,8 @@ Please note that, depending on the complexity of the simulations, it might be re
 
 ## Output
 
+After each pipeline run the main output directory will contain two subdirectories: `simulations` and `logs`. The former is where are the results are stored whereas the latter keeps captured standard output and error streams for the jobs. Each _demon_ run generates multiple output files which will be stored under separate subdirectories of `simulations`. These subdirectories are encoded by 4-letter codes, in order to learn about specific parameters utilised for each of the runs please inspect the `config.dat` file located inside each of those folders.
+
 ## Publications
 
 ## Appendix A: Miniconda installation
