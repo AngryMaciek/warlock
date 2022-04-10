@@ -45,8 +45,10 @@ jobs:
       - name: Compile demon
         shell: bash -l {0}
         run: >
-            g++ workflow/src/demon.cpp -o workflow/bin/demon
-            -I/usr/share/miniconda3/envs/demon-runner/include -lm
+            g++ workflow/src/demon.cpp
+            -o workflow/bin/demon
+            -I/usr/share/miniconda3/envs/demon-runner/include
+            -lm
 
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
@@ -54,22 +56,38 @@ jobs:
 
       - name: Run mock pipeline (test1)
         shell: bash -l {0}
-        run: bash demon-runner.sh --configfile tests/test1/config.yml --environment local
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test1/config.yml
+            --environment local
 
       - name: Run mock pipeline (test2)
         shell: bash -l {0}
-        run: bash demon-runner.sh --configfile tests/test2/config.yml --environment local --cores 4
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test2/config.yml
+            --environment local
+            --cores 4
 
       - name: Run mock pipeline (test3)
         shell: bash -l {0}
-        run: bash demon-runner.sh --configfile tests/test3/config.yml --environment local
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test3/config.yml
+            --environment local
 
       - name: Run mock pipeline (test4)
         shell: bash -l {0}
-        run: bash demon-runner.sh --configfile tests/test4/config.yml --environment local
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test4/config.yml
+            --environment local
 
       - name: Run mock pipeline (test5)
         shell: bash -l {0}
-        run: bash demon-runner.sh --configfile tests/test5/config.yml --environment local
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test5/config.yml
+            --environment local
 
 ...
