@@ -67,7 +67,7 @@ jobs:
             bash demon-runner.sh
             --configfile tests/test2/config.yml
             --environment local
-            --cores 4
+            --cores 2
 
       - name: Run mock pipeline (test3)
         shell: bash -l {0}
