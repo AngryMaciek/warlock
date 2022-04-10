@@ -15,7 +15,7 @@ on: push
 
 jobs:
 
-  simple-testrun:
+  pipeline-testruns:
     runs-on: ubuntu-20.04
 
     steps:
@@ -26,8 +26,7 @@ jobs:
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: 4.7.12
-          auto-update-conda: false
+          auto-update-conda: true
           environment-file: environment.yml
           activate-environment: demon-runner
           auto-activate-base: false
@@ -46,7 +45,7 @@ jobs:
         shell: bash -l {0}
         run: g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
 
-      - name: Run mock pipeline
+      - name: Run mock pipeline (test1)
         shell: bash -l {0}
         run: bash demon-runner.sh --configfile tests/test1/config.yml --environment local
 
