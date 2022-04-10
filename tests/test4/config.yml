@@ -1,0 +1,64 @@
+###############################################################################
+#
+#   Config options for the snakemake workflow
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 15-02-2022
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+
+### WORKFLOW PARAMETERS ###
+
+# Path to the cloned repository
+# (absolute path is required)
+workflow_repo_path: "/home/runner/work/demon-runner/demon-runner"
+
+# Path for the output directory
+# (absolute path is required)
+workflow_analysis_outdir: "/home/runner/work/demon-runner/demon-runner/tests/test4/output"
+
+### DEMON PARAMETERS ###
+
+# spatial_structure
+demon_log2_deme_carrying_capacity: [9, 10]
+
+# dispersal
+demon_migration_type: 0
+demon_init_migration_rate: "2e-03"
+demon_migration_edge_only: 1
+demon_migration_rate_scales_with_K: 1
+
+# mutation_rates
+demon_mu_driver_birth: "1e-05"
+demon_mu_passenger: [0.1, 0.2]
+demon_mu_driver_migration: 0
+demon_passenger_pop_threshold: -1
+  
+# fitness_effects
+demon_normal_birth_rate: 0.9
+demon_baseline_death_rate: 0
+demon_s_driver_birth: 0.1
+demon_s_passenger: 0
+demon_s_driver_migration: 0
+demon_max_relative_birth_rate: 10
+demon_max_relative_migration_rate: 10
+
+# non_biological_parameters
+demon_init_pop: 1
+demon_matrix_max: -1
+demon_max_pop: 1000000
+demon_max_time: 86400
+demon_max_generations: 200
+demon_seed: 10
+demon_write_grid: 0
+demon_write_clones_file: 0
+demon_write_demes_file: 0
+demon_record_matrix: 0
+demon_write_phylo: 0
+demon_calculate_total_diversity: 0
+demon_biopsy_size_per_sample: 100
+
+...

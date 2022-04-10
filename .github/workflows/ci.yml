@@ -56,4 +56,20 @@ jobs:
         shell: bash -l {0}
         run: bash demon-runner.sh --configfile tests/test1/config.yml --environment local
 
+      - name: Run mock pipeline (test2)
+        shell: bash -l {0}
+        run: bash demon-runner.sh --configfile tests/test2/config.yml --environment local
+
+      - name: Run mock pipeline (test3)
+        shell: bash -l {0}
+        run: bash demon-runner.sh --configfile tests/test3/config.yml --environment local
+
+      - name: Run mock pipeline (test4)
+        shell: bash -l {0}
+        run: bash demon-runner.sh --configfile tests/test4/config.yml --environment local
+
+      - name: Run mock pipeline (test5)
+        shell: bash -l {0}
+        run: bash demon-runner.sh --configfile tests/test5/config.yml --environment local
+
 ...
