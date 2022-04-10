@@ -54,14 +54,14 @@ jobs:
       # This could be parallelized in the CI but setting up conda
       # is expensive; its faster to run the tests one-by-one. 
 
-      - name: Run mock pipeline (test1)
+      - name: Run the pipeline (test1)
         shell: bash -l {0}
         run: >
             bash demon-runner.sh
             --configfile tests/test1/config.yml
             --environment local
 
-      - name: Run mock pipeline (test2)
+      - name: Run the pipeline (test2)
         shell: bash -l {0}
         run: >
             bash demon-runner.sh
@@ -69,7 +69,7 @@ jobs:
             --environment local
             --cores 2
 
-      - name: Run mock pipeline (test3)
+      - name: Run the pipeline (test3)
         shell: bash -l {0}
         run: >
             bash demon-runner.sh
