@@ -13,7 +13,7 @@ We are using [Git][res-git], [GitHub][res-github] and [GitHub Flow][res-git-flow
 
 ## Issue tracker
 
-Please use each project's GitHub [issue tracker][res-issue-tracker] to:
+Please use project's GitHub [issue tracker][res-issue-tracker] to:
 
 - find issues to work on
 - report bugs
@@ -39,15 +39,7 @@ problems etc., unless they appear to be bugs.
 
 ## Code style
 
-To make it easier for everyone to maintain, read and contribute to the code,
-as well as to ensure that the code base is robust and of high quality, we
-would kindly ask you to stick to the following guidelines for code style.
-
-- Please use a recent version of [Python 3][res-py] (3.10+) for writing Python scripts.
-- Please try to conform to the used code, docstring and commenting style within
-  a project to maintain consistency
-- Please use the following linters for standalone scripts (use default settings unless otherwise
-  stated): [`shellcheck`][res-sh-shellcheck], [`flake8`][res-py-flake8]
+To make it easier for everyone to maintain, read and contribute to the code, as well as to ensure that the code base is robust and of high quality, we would kindly ask you to stick to the used code, docstring and commenting style within a project to maintain consistency
 
 ## Commit messages
 

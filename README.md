@@ -71,7 +71,7 @@ Original configuration file for _demon_ sets the following model parameters:
 >* `int calculate_total_diversity`: whether to calculate diversity across all genotypes (can be computationally expensive)
 >* `int biopsy_size_per_sample`: max number of cells per biopsy sample (reserved for future applications)
 
-These parameters are now required to be set inside YAML-formatted pipeline configuration file. Please see an example [here](/workflow/config/config.yml). Note that multiple values for distinct parameters might be provided in lists. Current implementation of the workflow prepares a Cartesian product of all parameter's values and runs _demon_ with each of them in parallel.
+These parameters are now required to be set inside a YAML-formatted pipeline configuration file. A template for this file is available [here](/workflow/config/config.yml). Please see an example configuration file designed for the CI tests [here](/tests/test2/config.yml). Note that multiple values for distinct parameters might be provided in lists. Current implementation of the workflow prepares a Cartesian product of all parameter's values and runs _demon_ with each of them in parallel.
 
 Additionally, please notice that two absolute paths are required to be set in the same configuration file: path to this cloned repository as well as path for the analyses output directory.
 
@@ -91,21 +91,22 @@ Available options:
   * slurm = slurm cluster support.
 
   -n/--cores {XXX} (OPTIONAL)
-  Number of cores available for the workflow. Default = 1
+  Number of cores available for the workflow.
+  (Default = 1)
 ```
 
 ### Local
 
 Example command for a local workflow execution:
 ```
-bash demon-runner.sh --configfile workflow/config/config.yml --environment local
+bash demon-runner.sh --configfile {PATH} --environment local
 ```
 
 ### SLURM cluster
 
 Example command for a cluster-supported workflow execution:
 ```
-bash demon-runner.sh --configfile workflow/config/config.yml --environment slurm
+bash demon-runner.sh --configfile {PATH} --environment slurm
 ```
 
 Please note that, depending on the complexity of the simulations, it might be required to adjust parameters for cluster jobs. If the expected required resources (memory or computation time) are high please adjust `time` and `mem` fields in the cluster submission configuration file, located at: [`/workflow/profiles/slurm/slurm-config.json`](/workflow/profiles/slurm/slurm-config.json).
@@ -114,7 +115,9 @@ Please note that, depending on the complexity of the simulations, it might be re
 
 After each pipeline run the main output directory will contain two subdirectories: `simulations` and `logs`. The former is where all the results are stored whereas the latter keeps captured standard output and error streams for the jobs. Each _demon_ run generates multiple output files which will be stored under separate subdirectories of `simulations`. These subdirectories are encoded by 4-letter codes, in order to learn about specific parameters utilised for each of the runs please inspect the `config.dat` file located inside each of those folders.
 
-## Publications
+## Community guidelines
+For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
+For other inquires feel free to contact the developers at _wsciekly.maciek@gmail.com_
 
 ## Appendix A: Miniconda installation
 
