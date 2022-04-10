@@ -10,7 +10,6 @@
 ###############################################################################
 ---
 snakefile: "workflow/Snakefile"
-cores: 1
 printshellcmds: true
 rerun-incomplete: true
 keep-going: true
