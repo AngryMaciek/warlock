@@ -17,6 +17,5 @@ jobs: 128
 printshellcmds: true
 rerun-incomplete: true
 keep-going: true
-verbose: true
 
 ...
