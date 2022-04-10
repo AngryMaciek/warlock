@@ -44,7 +44,9 @@ jobs:
 
       - name: Compile demon
         shell: bash -l {0}
-        run: g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
+        run: >
+            g++ workflow/src/demon.cpp -o workflow/bin/demon
+            -I/usr/share/miniconda3/envs/demon-runner/include -lm
 
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
