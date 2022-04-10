@@ -26,7 +26,8 @@ jobs:
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
         with:
-          auto-update-conda: true
+          miniconda-version: 4.7.12
+          auto-update-conda: false
           environment-file: environment.yml
           activate-environment: demon-runner
           auto-activate-base: false
@@ -44,6 +45,10 @@ jobs:
       - name: Compile demon
         shell: bash -l {0}
         run: g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
+
+      # Run the tests sequentially;
+      # This could be parallelized in the CI but setting up conda
+      # is expensive; its faster to run the tests one-by-one. 
 
       - name: Run mock pipeline (test1)
         shell: bash -l {0}
