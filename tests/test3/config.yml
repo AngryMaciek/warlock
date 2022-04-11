@@ -42,7 +42,7 @@ demon_normal_birth_rate: 0.8
 demon_baseline_death_rate: 0
 demon_s_driver_birth: 0.1
 demon_s_passenger: 0
-demon_s_driver_migration: [0, 0.1, 0.2]
+demon_s_driver_migration: 0.1
 demon_max_relative_birth_rate: 10
 demon_max_relative_migration_rate: 10
 
