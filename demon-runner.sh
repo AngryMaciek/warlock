@@ -49,6 +49,7 @@ if printf '%s\n' "$@" | grep -q '^--help$'; then
     echo ""
     echo "  -n/--cores {XXX} (OPTIONAL)"
     echo "  Number of cores available for the workflow."
+    echo "  (Default = 1)"
     exit 0
 fi
 
@@ -108,7 +109,7 @@ if [ "$ENV" != "local" ] && [ "$ENV" != "slurm" ]; then
     exit 1
 fi
 
-# keep default number of cores?
+# set default number of cores
 if [ -z "$CORES" ]; then
     CORES=1
 fi

@@ -15,7 +15,7 @@ on: push
 
 jobs:
 
-  simple-testrun:
+  pipeline-testruns:
     runs-on: ubuntu-20.04
 
     steps:
@@ -44,10 +44,37 @@ jobs:
 
       - name: Compile demon
         shell: bash -l {0}
-        run: g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
+        run: >
+            g++ workflow/src/demon.cpp
+            -o workflow/bin/demon
+            -I/usr/share/miniconda3/envs/demon-runner/include
+            -lm
 
-      - name: Run mock pipeline
+      # Run the tests sequentially;
+      # This could be parallelized in the CI but setting up conda
+      # is expensive; its faster to run the tests one-by-one. 
+
+      - name: Run the pipeline (test1)
         shell: bash -l {0}
-        run: bash demon-runner.sh --configfile workflow/config/config.yml --environment local
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test1/config.yml
+            --environment local
+
+      - name: Run the pipeline (test2)
+        shell: bash -l {0}
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test2/config.yml
+            --environment local
+            --cores 4
+
+      - name: Run the pipeline (test3)
+        shell: bash -l {0}
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test3/config.yml
+            --environment local
+            --cores 2
 
 ...
