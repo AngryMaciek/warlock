@@ -14,7 +14,6 @@ cluster: "workflow/profiles/slurm/slurm-submit.py"
 cluster-status: "workflow/profiles/slurm/slurm-status.py"
 snakefile: "workflow/Snakefile"
 jobs: 128
-printshellcmds: true
 rerun-incomplete: true
 keep-going: true
 
