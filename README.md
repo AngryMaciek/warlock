@@ -119,6 +119,13 @@ After each pipeline run the main output directory will contain two subdirectorie
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
 For other inquires feel free to contact the developers at _wsciekly.maciek@gmail.com_
 
+## Citation
+
+Results obtained with _demon_ have already been published in:
+> Noble R, Burri D, Le Sueur C, Lemant J, Viossat Y, Kather JN, Beerenwinkel N. Spatial structure governs the mode of tumour evolution. Nat Ecol Evol. 2022 Feb;6(2):207-217. doi: https://doi.org/10.1038/s41559-021-01615-9
+
+> Noble R, Burley JT, Le Sueur C, Hochberg ME. When, why and how tumour clonal diversity predicts survival. Evol Appl. 2020 Jul 18;13(7):1558-1568. doi: https://doi.org/10.1111/eva.13057
+
 ## Appendix A: Miniconda installation
 
 To install the latest version of [Miniconda](https://docs.conda.io/en/latest/miniconda.html) on a Linux system please execute:
