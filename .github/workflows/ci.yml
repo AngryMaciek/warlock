@@ -42,9 +42,15 @@ jobs:
           conda info -a
           conda list
 
-      - name: Print compiler path
+      - name: Print compiler path (Ubuntu)
         shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
         run: which g++
+
+      - name: Print compiler path (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: which clang++
 
       - name: Compile demon
         shell: bash -l {0}
