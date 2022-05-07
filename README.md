@@ -22,14 +22,14 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
    conda activate demon-runner
    ```
 3. Compile _demon_
-   ```bash
-   # (Linux)
-   g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
-
-   # (macOS)
-   clang++ workflow/src/demon.cpp -o workflow/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
-   ```
-   _(assuming here that `/usr/share/miniconda3` is a path to your installation of the Miniconda package manager, please adjust if required)_
+   * Linux:
+     ```bash
+     g++ workflow/src/demon.cpp -o workflow/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
+     ```
+   * macOS:
+     ```bash
+     clang++ workflow/src/demon.cpp -o workflow/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
+     ```
 
 ## Configuration
 
