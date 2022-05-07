@@ -16,7 +16,7 @@ on: push
 jobs:
 
   pipeline-testruns:
-    runs-on: ubuntu-20.04
+    runs-on: [ubuntu-20.04, macos-10.15]
 
     steps:
 
