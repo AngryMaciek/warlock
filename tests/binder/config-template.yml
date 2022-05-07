@@ -23,7 +23,7 @@ workflow_analysis_outdir: ""
 ### DEMON PARAMETERS ###
 
 # spatial_structure
-demon_log2_deme_carrying_capacity: [7, 8, 9]
+demon_log2_deme_carrying_capacity: [8, 9, 10]
 
 # dispersal
 demon_migration_type: 0
@@ -33,12 +33,12 @@ demon_migration_rate_scales_with_K: 1
 
 # mutation_rates
 demon_mu_driver_birth: "1e-05"
-demon_mu_passenger: 0.001
-demon_mu_driver_migration: 0.01
+demon_mu_passenger: 0.1
+demon_mu_driver_migration: 0
 demon_passenger_pop_threshold: -1
   
 # fitness_effects
-demon_normal_birth_rate: 0.9
+demon_normal_birth_rate: 0.8
 demon_baseline_death_rate: 0
 demon_s_driver_birth: 0.1
 demon_s_passenger: 0
@@ -49,7 +49,7 @@ demon_max_relative_migration_rate: 10
 # non_biological_parameters
 demon_init_pop: 1
 demon_matrix_max: -1
-demon_max_pop: 1000000
+demon_max_pop: 100000
 demon_max_time: 86400
 demon_max_generations: 2000
 demon_seed: 10
