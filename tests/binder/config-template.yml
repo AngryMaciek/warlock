@@ -23,7 +23,7 @@ workflow_analysis_outdir: ""
 ### DEMON PARAMETERS ###
 
 # spatial_structure
-demon_log2_deme_carrying_capacity: [7, 8]
+demon_log2_deme_carrying_capacity: [7, 8, 9]
 
 # dispersal
 demon_migration_type: 0
