@@ -4,27 +4,30 @@
 
 # _demon-runner_
 
-_demon_ (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal.  
-The following repository encapsulates _demon_ into an automated and reproducible [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow in order to simplify parallel simulations to all users.
+_demon_ (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. The following repository encapsulates _demon_ into an automated and reproducible [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow in order to simplify parallel simulations to all users.
 
 ## Installation
 
-**The workflow is designed to run on Linux-based systems.**  
+**The workflow is designed to run on Linux and macOS systems.**  
 We have prepared a dedicated [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) recipe which will contain all prerequisites required to execute the workflow. Thus Anaconda/Miniconda package manager is a natural dependency (see [Appendix A](#appendix-a-miniconda-installation) for installation instructions.)
 
 1. Clone the repository and navigate inside that directory
-   ```
+   ```bash
    git clone https://github.com/AngryMaciek/demon-runner.git
    cd demon-runner
    ```
 2. Create and activate conda environment
-   ```
+   ```bash
    conda env create
    conda activate demon-runner
    ```
 3. Compile _demon_
-   ```
+   ```bash
+   # (Linux)
    g++ workflow/src/demon.cpp -o workflow/bin/demon -I/usr/share/miniconda3/envs/demon-runner/include -lm
+
+   # (macOS)
+   clang++ workflow/src/demon.cpp -o workflow/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
    ```
    _(assuming here that `/usr/share/miniconda3` is a path to your installation of the Miniconda package manager, please adjust if required)_
 
@@ -113,7 +116,7 @@ Please note that, depending on the complexity of the simulations, it might be re
 
 ## Output
 
-After each pipeline run the main output directory will contain two subdirectories: `simulations` and `logs`. The former is where all the results are stored whereas the latter keeps captured standard output and error streams for the jobs. Each _demon_ run generates multiple output files which will be stored under separate subdirectories of `simulations`. These subdirectories are encoded by 4-letter codes, in order to learn about specific parameters utilised for each of the runs please inspect the `config.dat` file located inside each of those folders.
+After each pipeline run the main output directory will contain three subdirectories: `configfiles`, `simulations` and `logs`. Each simulation run with a specific set of parameters is encoded by a 4-letter code. The first directory contains configuration files for each of the simulation runs; `simulations` contain all _demon_ output files; `logs` keep captured standard output and error streams for the commands.
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
