@@ -82,6 +82,14 @@ jobs:
             --configfile tests/test1/config-Ubuntu.yml
             --environment local
 
+      - name: Run the pipeline (test1) (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test1/config-macOS.yml
+            --environment local
+
       - name: Run the pipeline (test2) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
@@ -91,12 +99,30 @@ jobs:
             --environment local
             --cores 4
 
+      - name: Run the pipeline (test2) (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test2/config-macOS.yml
+            --environment local
+            --cores 4
+
       - name: Run the pipeline (test3) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         run: >
             bash demon-runner.sh
             --configfile tests/test3/config-Ubuntu.yml
+            --environment local
+            --cores 2
+
+      - name: Run the pipeline (test3) (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test3/config-macOS.yml
             --environment local
             --cores 2
 
