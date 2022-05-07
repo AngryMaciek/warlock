@@ -58,7 +58,7 @@ jobs:
         run: >
             g++ workflow/src/demon.cpp
             -o workflow/bin/demon
-            -I/usr/share/miniconda3/envs/demon-runner/include
+            -I$HOME/miniconda3/envs/demon-runner/include
             -lm
 
       - name: Compile demon (macOS)
@@ -67,7 +67,7 @@ jobs:
         run: >
             clang++ workflow/src/demon.cpp
             -o workflow/bin/demon
-            -I/Users/runner/miniconda3/envs/demon-runner/include
+            -I$HOME/miniconda3/envs/demon-runner/include
             -lm
 
       # Run the tests sequentially;
