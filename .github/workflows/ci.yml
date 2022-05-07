@@ -52,10 +52,20 @@ jobs:
         if: matrix.os == 'macos-11'
         run: which clang++
 
-      - name: Compile demon
+      - name: Compile demon (Ubuntu)
         shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
         run: >
             g++ workflow/src/demon.cpp
+            -o workflow/bin/demon
+            -I/usr/share/miniconda3/envs/demon-runner/include
+            -lm
+
+      - name: Compile demon (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: >
+            clang++ workflow/src/demon.cpp
             -o workflow/bin/demon
             -I/usr/share/miniconda3/envs/demon-runner/include
             -lm
