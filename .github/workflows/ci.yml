@@ -27,6 +27,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: pwd
+        shell: bash -l {0}
+        run: echo $(pwd)
+
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
         with:
