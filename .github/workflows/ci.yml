@@ -16,7 +16,11 @@ on: push
 jobs:
 
   pipeline-testruns:
-    runs-on: ubuntu-20.04
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, macos-11]
 
     steps:
 
@@ -38,42 +42,87 @@ jobs:
           conda info -a
           conda list
 
-      - name: Print compiler path
+      - name: Print compiler path (Ubuntu)
         shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
         run: which g++
 
-      - name: Compile demon
+      - name: Print compiler path (macOS)
         shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: which clang++
+
+      - name: Compile demon (Ubuntu)
+        shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
         run: >
             g++ workflow/src/demon.cpp
             -o workflow/bin/demon
             -I/usr/share/miniconda3/envs/demon-runner/include
             -lm
 
+      - name: Compile demon (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: >
+            clang++ workflow/src/demon.cpp
+            -o workflow/bin/demon
+            -I/Users/runner/miniconda3/envs/demon-runner/include
+            -lm
+
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
       # is expensive; its faster to run the tests one-by-one. 
 
-      - name: Run the pipeline (test1)
+      - name: Run the pipeline (test1) (Ubuntu)
         shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
         run: >
             bash demon-runner.sh
-            --configfile tests/test1/config.yml
+            --configfile tests/test1/config-Ubuntu.yml
             --environment local
 
-      - name: Run the pipeline (test2)
+      - name: Run the pipeline (test1) (macOS)
         shell: bash -l {0}
+        if: matrix.os == 'macos-11'
         run: >
             bash demon-runner.sh
-            --configfile tests/test2/config.yml
+            --configfile tests/test1/config-macOS.yml
+            --environment local
+
+      - name: Run the pipeline (test2) (Ubuntu)
+        shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test2/config-Ubuntu.yml
             --environment local
             --cores 4
 
-      - name: Run the pipeline (test3)
+      - name: Run the pipeline (test2) (macOS)
         shell: bash -l {0}
+        if: matrix.os == 'macos-11'
         run: >
             bash demon-runner.sh
-            --configfile tests/test3/config.yml
+            --configfile tests/test2/config-macOS.yml
+            --environment local
+            --cores 4
+
+      - name: Run the pipeline (test3) (Ubuntu)
+        shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test3/config-Ubuntu.yml
+            --environment local
+            --cores 2
+
+      - name: Run the pipeline (test3) (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: >
+            bash demon-runner.sh
+            --configfile tests/test3/config-macOS.yml
             --environment local
             --cores 2
 
