@@ -19,7 +19,56 @@ import traceback
 from jinja2 import Template
 
 
-# define always local rules
+# internal path to the demon configfile template
+demon_config_template = os.path.join(
+        config["workflow_repo_path"],
+        "resources",
+        "template-config.dat"
+)
+
+
+def CreateConfigFilesCrossProduct():
+    """Render demon config template with the parameters from YAML;
+    implement Cartesian product of all possible parameters' options.
+
+    Args:
+        objects for this workflow; required for snakemake
+    """
+
+    demon_params = [k for k in list(config.keys()) if k.startswith("demon_")]
+    variable_params = [k for k in demon_params if type(config[k]) is list]
+    list_of_lists = [config[key] for key in variable_params]
+    cartesian_products = [_ for _ in itertools.product(*list_of_lists)]
+    N = prod([len(config[k]) for k in variable_params])
+    hexnames = [hex(_).split("x")[-1].upper().rjust(4, "0") for _ in range(N)]
+
+    # dict of configfiles for demon:
+    # run ID -> demon config template rendered string
+    configfiles = {}
+
+    for dirname, c_prod in zip(hexnames, cartesian_products):
+
+        # render the config dict first
+        config_copy = dict(config) # deep copy of a Python dict
+        for _ in range(len(variable_params)):
+            config_copy[variable_params[_]] = c_prod[_]
+
+        # then render the DAT template
+        with open(demon_config_template) as f: template = Template(f.read())
+        configfiles[dirname] = template.render(config_copy)
+
+    return configfiles
+
+
+# prepare the encoded configfiles for demon
+# (before the pipeline's init)
+ENCODED_DEMON_CONFIGFILES = CreateConfigFilesCrossProduct()
+
+
+##############################################################################
+
+
+# define always-local rules
 localrules: all, prepare_configfiles
 
 
@@ -31,83 +80,22 @@ onstart:
     )
 
 
-# after workflow sucess: clean snakemake timestamp
-onsuccess:
-    os.remove(
-        os.path.join(
-            config["workflow_analysis_outdir"],
-            "simulations",
-            ".snakemake_timestamp"
-        )
-    )
-
-
-def CreateConfigFilesCrossProduct(wildcards, config_template):
-    """Render demon config template with the parameters from YAML;
-    implement Cartesian product of all possible parameters' options.
-
-    Args:
-        wildcards (snakemake wildcards): internal snakemake wildcards
-        objects for this workflow; required for snakemake
-    """
-
-    demon_params = [k for k in list(config.keys()) if k.startswith("demon_")]
-    variable_params = [k for k in demon_params if type(config[k]) is list]
-    list_of_lists = [config[key] for key in variable_params]
-    cartesian_products = [_ for _ in itertools.product(*list_of_lists)]
-    N = prod([len(config[k]) for k in variable_params])
-    hexnames = [hex(_).split("x")[-1].upper().rjust(4, "0") for _ in range(N)]
-
-    for dirname, c_prod in zip(hexnames, cartesian_products):
-
-        # create simulation dirs:
-        os.makedirs(
-            os.path.join(
-                wildcards.outdir,
-                "simulations",
-                dirname
-            ),
-            exist_ok=False
-        )
-
-        # render the config dict first
-        config_copy = dict(config) # deep copy of a Python dict
-        for _ in range(len(variable_params)):
-            config_copy[variable_params[_]] = c_prod[_]
-
-        # then render the DAT template
-        with open(config_template) as f:
-            template = Template(f.read())
-        rendered = template.render(config_copy)
-
-        # prepare expected config for demon
-        c_path = os.path.join(
-            wildcards.outdir,
-            "simulations",
-            dirname,
-            "config.dat"
-        )
-        with open(c_path, "w") as f:
-            f.write(rendered)
-
-
-checkpoint prepare_configfiles:
+rule prepare_configfiles:
     """
     Prepare separate simulation config files based on the main workflow config.
     """
     output:
-        DIR_simulations_outdir = directory(
-            os.path.join(
-                "{outdir}",
-                "simulations"
-            )
+        DAT_demon_configfile = os.path.join(
+            "{outdir}",
+            "configfiles",
+            "{runID}.dat"
         )
 
     params:
-        DAT_config_template = os.path.join(
-                config["workflow_repo_path"],
-                "resources",
-                "template-config.dat"
+        STR_runID = "{runID}",
+        DIR_demon_configfile_dirpath = os.path.join(
+            "{outdir}",
+            "configfiles"
         )
 
     threads: 1
@@ -115,34 +103,31 @@ checkpoint prepare_configfiles:
     log:
         LOG_local_stdout = os.path.join(
             "{outdir}",
-            "log",
-            "prepare_configfiles.stdout.log"
+            "logs",
+            "prepare_configfiles.{runID}.stdout.log"
         ),
         LOG_local_stderr = os.path.join(
             "{outdir}",
-            "log",
-            "prepare_configfiles.stderr.log"
+            "logs",
+            "prepare_configfiles.{runID}.stderr.log"
         )
 
     benchmark:
         os.path.join(
             "{outdir}",
-            "log",
-            "prepare_configfiles.benchmark.log"
+            "logs",
+            "prepare_configfiles.{runID}.benchmark.log"
         )
 
     run:
         with open(log.LOG_local_stderr, "w") as errlogfile:
             try:
                 os.makedirs(
-                    os.path.join(
-                        output.DIR_simulations_outdir
-                    )
+                    params.DIR_demon_configfile_dirpath,
+                    exist_ok=True
                 )
-                CreateConfigFilesCrossProduct(
-                    wildcards,
-                    params.DAT_config_template
-                )
+                with open(output.DAT_demon_configfile, "w") as f:
+                    f.write(ENCODED_DEMON_CONFIGFILES[params.STR_runID])
             except Exception:
                 traceback.print_exc(file = errlogfile)
                 raise Exception(
@@ -161,31 +146,27 @@ rule run_demon:
             "bin",
             "demon"
         ),
-        DAT_config = os.path.join(
+        DAT_demon_configfile = os.path.join(
             "{outdir}",
-            "simulations",
-            "{simID}",
-            "config.dat"
+            "configfiles",
+            "{runID}.dat"
         )
 
     output:
-        DAT_simulation_output = os.path.join(
-            "{outdir}",
-            "simulations",
-            "{simID}",
-            "output.dat"
+        DIR_simulations_outdir = directory(
+            os.path.join(
+                "{outdir}",
+                "simulations",
+                "{runID}"
+            )
         )
 
     params:
-        DIR_simulation_subdir = os.path.join(
-            "{outdir}",
-            "simulations",
-            "{simID}"
-        ),
+        STR_runID = "{runID}",
         LOG_cluster_log = os.path.join(
             "{outdir}",
-            "log",
-            "run_demon.{simID}.cluster.log"
+            "logs",
+            "run_demon.{runID}.cluster.log"
         )
 
     threads: 1
@@ -193,50 +174,42 @@ rule run_demon:
     log:
         LOG_local_stdout = os.path.join(
             "{outdir}",
-            "log",
-            "run_demon.{simID}.stdout"
+            "logs",
+            "run_demon.{runID}.stdout"
         ),
         LOG_local_stderr = os.path.join(
             "{outdir}",
-            "log",
-            "run_demon.{simID}.stderr"
+            "logs",
+            "run_demon.{runID}.stderr"
         )
 
     benchmark:
         os.path.join(
             "{outdir}",
-            "log",
-            "run_demon.{simID}.benchmark.log"
+            "logs",
+            "run_demon.{runID}.benchmark.log"
         )
 
     shell:
+        # Tiny workaround since demon creates output in the exact same
+        # dir where its configfile is located in.
+        # (small nap time for possible filesystem delays)
         """
+        (mkdir {output.DIR_simulations_outdir} \
+        && \
+        sleep 5 \
+        && \
+        cp \
+        {input.DAT_demon_configfile} \
+        {output.DIR_simulations_outdir}/config.dat \
+        && \
         {input.BIN_demon} \
-        {params.DIR_simulation_subdir} \
+        {output.DIR_simulations_outdir} \
         config.dat \
+        rm -f {output.DIR_simulations_outdir}/config.dat) \
         1> {log.LOG_local_stdout} \
         2> {log.LOG_local_stderr}
         """
-
-
-def aggregate_input(wildcards):
-    """Collect output files after demon for a dynamic number of simulations;
-    implements aggregation after checkpoint-based graph re-evaluation.
-
-    Args:
-        wildcards (snakemake wildcards): internal snakemake wildcards
-        objects for this workflow; required for snakemake
-
-    Returns:
-        list: output files of a demon simulation
-    """
-    checkpoint_output = checkpoints.prepare_configfiles.get(
-        outdir=config["workflow_analysis_outdir"]
-    ).output[0]
-    simulation_dirs = glob.glob(
-        checkpoint_output + os.path.sep + "*" + os.path.sep
-    )
-    return [os.path.join(_, "output.dat") for _ in simulation_dirs]
 
 
 rule all:
@@ -244,4 +217,12 @@ rule all:
     Target rule gathering final output of the workflow.
     """
     input:
-        aggregate_input
+        DIR_simulations_outdir = expand(
+            os.path.join(
+                "{outdir}",
+                "simulations",
+                "{runID}"
+            ),
+            outdir = config["workflow_analysis_outdir"],
+            runID = ENCODED_DEMON_CONFIGFILES.keys()
+        )
