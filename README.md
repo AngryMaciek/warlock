@@ -119,6 +119,10 @@ Please note that, depending on the complexity of the simulations, it might be re
 
 After each pipeline run the main output directory will contain three subdirectories: `configfiles`, `simulations` and `logs`. Each simulation run with a specific set of parameters is encoded by a 4-letter code. The first directory contains configuration files for each of the simulation runs; `simulations` contain all _demon_ output files; `logs` keep captured standard output and error streams for the commands.
 
+## Example
+
+Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/demon-runner/binder?labpath=notebook.ipynb) we prepared.
+
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
 For other inquires feel free to contact the developers at _wsciekly.maciek@gmail.com_
