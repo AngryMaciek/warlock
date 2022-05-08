@@ -1,5 +1,0 @@
-#!/bin/bash
-
-set -ex
-
-mamba install -c conda-forge r-base
