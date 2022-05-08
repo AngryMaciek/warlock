@@ -2,4 +2,7 @@
 
 set -ex
 
-mamba install -c conda-forge r-base=4.0.3
+mamba install -c conda-forge \
+r-base=4.0.3 \
+r-devtools=2.4.3 \
+rpy2=3.5.1
