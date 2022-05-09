@@ -1,5 +1,5 @@
 #!/bin/bash
 
 set -ex
-mamba install -c conda-forge r-base=3.6.3 r-devtools cmake r-foreign
+mamba install -c conda-forge r-base=3.6.3 r-devtools cmake r-foreign rpy2
 Rscript -e "devtools::install_github('robjohnnoble/demonanalysis', upgrade=TRUE)"
