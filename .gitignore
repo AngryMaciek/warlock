@@ -7,3 +7,6 @@
 
 # snakemake internal directories
 .snakemake/
+
+# notebook checkpoints
+.ipynb_checkpoints/
