@@ -121,7 +121,7 @@ After each pipeline run the main output directory will contain three subdirector
 
 ## Example
 
-Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/demon-runner/binder?labpath=notebook.ipynb) we prepared.
+Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/demon-runner/master?labpath=notebook.ipynb) we prepared.
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
