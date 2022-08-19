@@ -1,7 +1,5 @@
 ###############################################################################
 #
-#   Software to be installed in the main environment
-#
 #   AUTHOR: Maciej_Bak
 #   CONTACT: wsciekly.maciek@gmail.com
 #   CREATED: 15-02-2022
@@ -26,6 +24,8 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          submodules: "true"
 
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
@@ -56,8 +56,8 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         run: >
-            g++ workflow/src/demon.cpp
-            -o workflow/bin/demon
+            g++ resources/demon_model/src/demon.cpp
+            -o resources/demon_model/bin/demon
             -I/usr/share/miniconda3/envs/demon-runner/include
             -lm
 
@@ -65,8 +65,8 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'macos-11'
         run: >
-            clang++ workflow/src/demon.cpp
-            -o workflow/bin/demon
+            clang++ resources/demon_model/src/demon.cpp
+            -o resources/demon_model/bin/demon
             -I/Users/runner/miniconda3/envs/demon-runner/include
             -lm
 

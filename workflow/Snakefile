@@ -142,7 +142,8 @@ rule run_demon:
     input:
         BIN_demon = os.path.join(
             config["workflow_repo_path"],
-            "workflow",
+            "resources",
+            "demon_model",
             "bin",
             "demon"
         ),
