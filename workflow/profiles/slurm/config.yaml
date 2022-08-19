@@ -16,5 +16,6 @@ snakefile: "workflow/Snakefile"
 jobs: 128
 rerun-incomplete: true
 keep-going: true
+latency-wait: 60
 
 ...

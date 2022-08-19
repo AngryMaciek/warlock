@@ -5,7 +5,7 @@
     "time": "00:59:59",
     "cpus-per-task":"1",
     "mem":"5G",
-    "job-name": "{rule}.{wildcards.simID}",
+    "job-name": "{rule}.{wildcards.runID}",
     "output": "{params.LOG_cluster_log}.%j.%N.out"
   }
 
