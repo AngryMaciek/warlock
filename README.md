@@ -25,11 +25,11 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 3. Compile _demon_
    * Linux:
      ```bash
-     g++ workflow/src/demon.cpp -o workflow/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
+     g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
      ```
    * macOS:
      ```bash
-     clang++ workflow/src/demon.cpp -o workflow/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
+     clang++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
      ```
 
 ## Configuration
