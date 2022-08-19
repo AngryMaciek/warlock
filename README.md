@@ -5,7 +5,7 @@
 
 # _demon-runner_
 
-_demon_ (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution. The following repository encapsulates _demon_ into an automated and reproducible [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow in order to simplify parallel simulations to all users.
+[_demon_](https://github.com/robjohnnoble/demon_model) (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution. The following repository encapsulates _demon_ into an automated and reproducible [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow in order to simplify parallel simulations to all users.
 
 ## Installation
 
@@ -14,7 +14,7 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 
 1. Clone the repository and navigate inside that directory
    ```bash
-   git clone https://github.com/AngryMaciek/demon-runner.git
+   git clone https://github.com/AngryMaciek/demon-runner.git --recursive
    cd demon-runner
    ```
 2. Create and activate conda environment
