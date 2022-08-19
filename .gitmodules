@@ -1,4 +1,0 @@
-[submodule "demon_model"]
-	path = demon_model
-	url = https://github.com/robjohnnoble/demon_model
-	branch = master
