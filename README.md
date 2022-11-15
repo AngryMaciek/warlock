@@ -33,6 +33,8 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
      clang++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
      ```
 
+    > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `demon-runner` environment to the compiler.
+
 ## Configuration
 
 For a detailed description of all available simulation parameters please inspect [GitHub repository](https://github.com/robjohnnoble/demon_model) of the core _demon_ model.
