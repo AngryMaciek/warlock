@@ -37,6 +37,19 @@ reproducible examples.
 Please **do not** use the issue tracker to ask usage questions, installation
 problems etc., unless they appear to be bugs.
 
+## Ephemeral development environment
+
+You are more then welcome to contribute to our codebase from the cloud! We set up an ephemeral [Gitpod](https://www.gitpod.io) environment for all the developers who prefer coding from a remote server.
+
+Just click on this cool button below:  
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AngryMaciek/demon-runner)
+
+See more information on how to start up a _Gitpod_ environment dedicated to a specific remote branch [here](https://www.gitpod.io/docs/introduction/learn-gitpod/context-url#branch-and-commit-contexts), specific issue [here](https://www.gitpod.io/docs/introduction/learn-gitpod/context-url#issue-context) and a specific pull request [here](https://www.gitpod.io/docs/introduction/learn-gitpod/context-url#pullmerge-request-context).
+
+However, please remember that such luxury is limitted:
+> Gitpod offers a free plan for new users which includes 50 hours of standard workspace usage.
+>If you need more hours, you can upgrade to one of the paid plans in your personal settings.
+
 ## Code style
 
 To make it easier for everyone to maintain, read and contribute to the code, as well as to ensure that the code base is robust and of high quality, we would kindly ask you to stick to the used code, docstring and commenting style within a project to maintain consistency
