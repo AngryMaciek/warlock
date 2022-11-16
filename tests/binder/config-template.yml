@@ -29,7 +29,7 @@ demon_log2_deme_carrying_capacity: [8, 9, 10]
 
 # dispersal
 demon_migration_type: 0
-demon_init_migration_rate: "1e-03"
+demon_init_migration_rate: "2e-03"
 demon_migration_edge_only: 1
 demon_migration_rate_scales_with_K: 1
 
