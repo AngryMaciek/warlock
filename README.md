@@ -20,6 +20,9 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
    git clone https://github.com/AngryMaciek/demon-runner.git --recursive
    cd demon-runner
    ```
+
+    > Note: if you wish to compile a different version of _demon_ (i.e. other branch) please remember to navigate to `resources/demon_model` first and `git checkout` a proper branch of that repository.
+
 2. Create and activate conda environment
    ```bash
    conda env create
