@@ -10,3 +10,6 @@
 
 # notebook checkpoints
 .ipynb_checkpoints/
+
+# conda env
+.demon-runner/
