@@ -10,7 +10,7 @@ tasks:
     # build with mamba in cwd (backed-up)
     init: |
       echo "Building development environment..."
-      mamba env create -f environment-dev.yml --prefix ./.demon-runner
+      mamba env create -f environment.yml --prefix ./.demon-runner
       echo "Development environment ready!"
     # adjust PS1 + activate dev. env.
     command: |
