@@ -21,7 +21,6 @@ tasks:
       conda activate ./.demon-runner
       echo "Ready to work!"
       echo "Remembet to switch to a feature branch before starting the development :)"
-ports:
 
 github:
   prebuilds:
