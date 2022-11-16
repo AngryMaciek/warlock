@@ -3,6 +3,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/demon-runner)](https://github.com/AngryMaciek/demon-runner/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/demon-runner)](https://github.com/AngryMaciek/demon-runner/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7143400.svg)](https://doi.org/10.5281/zenodo.7143400)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 # _demon-runner_
 
@@ -89,7 +90,7 @@ Feel free to run the pipeline and inspect the results yourself in an [interactiv
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
-For other inquires feel free to contact the developers at _wsciekly.maciek@gmail.com_
+For other inquires feel free to contact project lead by email: [✉️](mailto:wsciekly.maciek@gmail.com)
 
 ## Citation
 
@@ -106,3 +107,5 @@ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 source .bashrc
 ```
+
+For other platforms, see all available installers [here](https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links).
