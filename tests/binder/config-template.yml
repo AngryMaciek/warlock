@@ -15,12 +15,12 @@
 # Path to the cloned repository
 # (absolute path is required, also: do not use "~" character -
 # some HPC clusters evaluate it differently on login & computing nodes)
-workflow_repo_path: ""
+workflow_repo_path: "/Users/maciek/Desktop/demon-runner"
 
 # Path for the output directory
 # (absolute path is required, also: do not use "~" character -
 # some HPC clusters evaluate it differently on login & computing nodes)
-workflow_analysis_outdir: ""
+workflow_analysis_outdir: "/Users/maciek/Desktop/demon-runner/output"
 
 ### DEMON PARAMETERS ###
 
@@ -29,12 +29,12 @@ demon_log2_deme_carrying_capacity: [8, 9, 10]
 
 # dispersal
 demon_migration_type: 0
-demon_init_migration_rate: "2e-03"
+demon_init_migration_rate: "1e-03"
 demon_migration_edge_only: 1
 demon_migration_rate_scales_with_K: 1
 
 # mutation_rates
-demon_mu_driver_birth: "1e-05"
+demon_mu_driver_birth: "5e-06"
 demon_mu_passenger: 0.1
 demon_mu_driver_migration: 0
 demon_passenger_pop_threshold: -1
