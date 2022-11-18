@@ -30,10 +30,12 @@ jobs:
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: 4.7.12
-          auto-update-conda: false
+          mamba-version: "*"
+          channels: conda-forge
+          channel-priority: true
+          auto-update-conda: true
           environment-file: environment.yml
-          activate-environment: demon-runner
+          activate-environment: warlock
           auto-activate-base: false
 
       - name: Display all miniconda & env info
@@ -58,7 +60,7 @@ jobs:
         run: >
             g++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/usr/share/miniconda3/envs/demon-runner/include
+            -I/usr/share/miniconda/envs/warlock/include
             -lm
 
       - name: Compile demon (macOS)
@@ -67,7 +69,7 @@ jobs:
         run: >
             clang++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/Users/runner/miniconda3/envs/demon-runner/include
+            -I/usr/local/miniconda/envs/warlock/include
             -lm
 
       # Run the tests sequentially;
@@ -78,7 +80,7 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         run: >
-            bash demon-runner.sh
+            bash warlock.sh
             --configfile tests/test1/config-Ubuntu.yml
             --environment local
 
@@ -86,7 +88,7 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'macos-11'
         run: >
-            bash demon-runner.sh
+            bash warlock.sh
             --configfile tests/test1/config-macOS.yml
             --environment local
 
@@ -94,7 +96,7 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         run: >
-            bash demon-runner.sh
+            bash warlock.sh
             --configfile tests/test2/config-Ubuntu.yml
             --environment local
             --cores 4
@@ -103,7 +105,7 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'macos-11'
         run: >
-            bash demon-runner.sh
+            bash warlock.sh
             --configfile tests/test2/config-macOS.yml
             --environment local
             --cores 4
@@ -112,7 +114,7 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         run: >
-            bash demon-runner.sh
+            bash warlock.sh
             --configfile tests/test3/config-Ubuntu.yml
             --environment local
             --cores 2
@@ -121,7 +123,7 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'macos-11'
         run: >
-            bash demon-runner.sh
+            bash warlock.sh
             --configfile tests/test3/config-macOS.yml
             --environment local
             --cores 2

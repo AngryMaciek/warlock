@@ -42,7 +42,7 @@ problems etc., unless they appear to be bugs.
 You are more then welcome to contribute to our codebase from the cloud! We set up an ephemeral [Gitpod](https://www.gitpod.io) environment for all the developers who prefer coding from a remote server.
 
 Just click on this cool button below:  
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AngryMaciek/demon-runner)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
 
 See more information on how to start up a _Gitpod_ environment dedicated to a specific remote branch [here](https://www.gitpod.io/docs/introduction/learn-gitpod/context-url#branch-and-commit-contexts), specific issue [here](https://www.gitpod.io/docs/introduction/learn-gitpod/context-url#issue-context) and a specific pull request [here](https://www.gitpod.io/docs/introduction/learn-gitpod/context-url#pullmerge-request-context).
 
@@ -119,7 +119,7 @@ happen smoothly:
 [res-git]: <https://git-scm.com/>
 [res-github]: <https://github.com>
 [res-git-flow]: <https://githubflow.github.io/>
-[res-issue-tracker]: <https://github.com/AngryMaciek/demon-runner/issues>
+[res-issue-tracker]: <https://github.com/AngryMaciek/warlock/issues>
 [res-bug-report]: .github/ISSUE_TEMPLATE/bug_report.md
 [res-feature-request]: .github/ISSUE_TEMPLATE/feature_request.md
 [res-py]: <https://www.python.org/>
