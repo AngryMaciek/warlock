@@ -60,7 +60,7 @@ jobs:
         run: >
             g++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/usr/share/miniconda3/envs/warlock/include
+            -I/usr/share/miniconda/envs/warlock/include
             -lm
 
       - name: Compile demon (macOS)
@@ -69,7 +69,7 @@ jobs:
         run: >
             clang++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/Users/runner/miniconda3/envs/warlock/include
+            -I/Users/runner/miniconda/envs/warlock/include
             -lm
 
       # Run the tests sequentially;
