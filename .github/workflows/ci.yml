@@ -31,6 +31,9 @@ jobs:
         uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: 4.7.12
+          mamba-version: "*"
+          channels: conda-forge
+          channel-priority: true
           auto-update-conda: false
           environment-file: environment.yml
           activate-environment: warlock
