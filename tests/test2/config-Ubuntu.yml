@@ -15,12 +15,12 @@
 # Path to the cloned repository
 # (absolute path is required, also: do not use "~" character -
 # some HPC clusters evaluate it differently on login & computing nodes)
-workflow_repo_path: "/home/runner/work/demon-runner/demon-runner"
+workflow_repo_path: "/home/runner/work/warlock/warlock"
 
 # Path for the output directory
 # (absolute path is required, also: do not use "~" character -
 # some HPC clusters evaluate it differently on login & computing nodes)
-workflow_analysis_outdir: "/home/runner/work/demon-runner/demon-runner/tests/test2/output"
+workflow_analysis_outdir: "/home/runner/work/warlock/warlock/tests/test2/output"
 
 ### DEMON PARAMETERS ###
 

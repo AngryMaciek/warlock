@@ -31,12 +31,12 @@ trap goback SIGINT
 # no args
 if [ $# -eq 0 ]
 then
-    echo "Please execute $ demon-runner.sh --help to learn how to call this script."
+    echo "Please execute $ warlock.sh --help to learn how to call this script."
 fi
 
 # --help msg
 if printf '%s\n' "$@" | grep -q '^--help$'; then
-    echo "This is the main script to call the demon-runner workflow."
+    echo "This is the main script to call the warlock workflow."
     echo "Available options:"
     echo ""
     echo "  -c/--configfile {XXX} (REQUIRED)"
