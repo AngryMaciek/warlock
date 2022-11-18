@@ -8,7 +8,9 @@
 
 # _warlock_
 
-[_demon_](https://github.com/robjohnnoble/demon_model) (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution. The following repository encapsulates _demon_ into an automated and reproducible [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow in order to simplify parallel simulations to all users.
+[_demon_](https://github.com/robjohnnoble/demon_model) (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution.
+
+The following repository encapsulates _demon_ into an automated and reproducible _snakemake_ workflow in order to simplify parallel simulations to all users. Just as a [warlock](https://en.wikipedia.org/wiki/Warlock), it can spawn multiple demons (as cluster jobs), provided enough mystic powers (computational resources) are available.
 
 ## Installation
 
