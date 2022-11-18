@@ -1,12 +1,12 @@
-[![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/demon-runner)
-[![ci](https://github.com/AngryMaciek/demon-runner/workflows/ci/badge.svg)](https://github.com/AngryMaciek/demon-runner/actions?query=workflow%3Aci)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/demon-runner/master?labpath=notebook.ipynb)
-[![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/demon-runner)](https://github.com/AngryMaciek/demon-runner/issues)
-[![GitHub license](https://img.shields.io/github/license/AngryMaciek/demon-runner)](https://github.com/AngryMaciek/demon-runner/blob/master/LICENSE)
+[![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
+[![ci](https://github.com/AngryMaciek/warlock/workflows/ci/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb)
+[![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
+[![GitHub license](https://img.shields.io/github/license/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7143400.svg)](https://doi.org/10.5281/zenodo.7143400)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-# _demon-runner_
+# _warlock_
 
 [_demon_](https://github.com/robjohnnoble/demon_model) (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution. The following repository encapsulates _demon_ into an automated and reproducible [Snakemake](https://snakemake.readthedocs.io/en/stable/) workflow in order to simplify parallel simulations to all users.
 
@@ -17,8 +17,8 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 
 1. Clone the repository and navigate inside that directory
    ```bash
-   git clone https://github.com/AngryMaciek/demon-runner.git --recursive
-   cd demon-runner
+   git clone https://github.com/AngryMaciek/warlock.git --recursive
+   cd warlock
    ```
 
     > Note: if you wish to compile a different version of _demon_ (i.e. other branch) please remember to navigate to `resources/demon_model` first and `git checkout` a proper branch of that repository.
@@ -26,19 +26,19 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 2. Create and activate conda environment
    ```bash
    conda env create
-   conda activate demon-runner
+   conda activate warlock
    ```
 3. Compile _demon_
    * Linux:
      ```bash
-     g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
+     g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
      ```
    * macOS:
      ```bash
-     clang++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/demon-runner/include -lm
+     clang++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
      ```
 
-    > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `demon-runner` environment to the compiler.
+    > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `warlock` environment to the compiler.
 
 ## Configuration
 
@@ -50,9 +50,9 @@ Additionally, please notice that two absolute paths are required to be set in th
 
 ## Execution
 
-This workflow should be executed via a top-level bash script: `demon-runner.sh` which has the following description:
+This workflow should be executed via a top-level bash script: `warlock.sh` which has the following description:
 ```
-This is the main script to call the demon-runner workflow.
+This is the main script to call the _warlock_ workflow.
 Available options:
 
   -c/--configfile {XXX} (REQUIRED)
@@ -72,14 +72,14 @@ Available options:
 
 Example command for a local workflow execution:
 ```
-bash demon-runner.sh --configfile {PATH} --environment local
+bash warlock.sh --configfile {PATH} --environment local
 ```
 
 ### SLURM cluster
 
 Example command for a cluster-supported workflow execution:
 ```
-bash demon-runner.sh --configfile {PATH} --environment slurm
+bash warlock.sh --configfile {PATH} --environment slurm
 ```
 
 Please note that, depending on the complexity of the simulations, it might be required to adjust parameters for cluster jobs. If the expected required resources (memory or computation time) are high please adjust `time` and `mem` fields in the cluster submission configuration file, located at: [`/workflow/profiles/slurm/slurm-config.json`](/workflow/profiles/slurm/slurm-config.json).
@@ -90,7 +90,7 @@ After each pipeline run the main output directory will contain three subdirector
 
 ## Example
 
-Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/demon-runner/master?labpath=notebook.ipynb) we prepared.
+Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb) we prepared.
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
