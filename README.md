@@ -46,7 +46,7 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 
 For a detailed description of all available simulation parameters please inspect [GitHub repository](https://github.com/robjohnnoble/demon_model) of the core _demon_ model.
 
-These parameters are now required to be set inside a YAML-formatted pipeline configuration file. A template for this file is available [here](/workflow/config/config.yml). Please see an example configuration file designed for the CI tests [here](/tests/test2/config.yml). Note that multiple values for distinct parameters might be provided in lists. Current implementation of the workflow prepares a Cartesian product of all parameter's values and runs _demon_ with each of them in parallel.
+These parameters are now required to be set inside a YAML-formatted pipeline configuration file. A template for this file is available [here](/workflow/config/config.yml). Please see an example configuration file designed for the CI tests [here](/tests/test2/config-Ubuntu.yml). Note that multiple values for distinct parameters might be provided in lists. Current implementation of the workflow prepares a Cartesian product of all parameter's values and runs _demon_ with each of them in parallel.
 
 Additionally, please notice that two absolute paths are required to be set in the same configuration file: path to this cloned repository as well as path for the analyses output directory.
 
