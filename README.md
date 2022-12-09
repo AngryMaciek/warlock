@@ -84,7 +84,9 @@ Example command for a cluster-supported workflow execution:
 bash warlock.sh --configfile {PATH} --environment slurm
 ```
 
-Please note that, depending on the complexity of the simulations, it might be required to adjust parameters for cluster jobs. If the expected required resources (memory or computation time) are high please adjust `time` and `mem` fields in the cluster submission configuration file, located at: [`/workflow/profiles/slurm/slurm-config.json`](/workflow/profiles/slurm/slurm-config.json).
+Please note that, depending on the complexity of the simulations, it might be required to adjust parameters for cluster jobs. If the expected required resources (memory or computation time) are high please adjust `time` and `mem` fields in the cluster submission configuration file, located at: [`/workflow/profiles/slurm/slurm-config.json`](/workflow/profiles/slurm/slurm-config.json).  
+
+Running large workflows with hundreds of cluster jobs might take very long; consider executing _warlock_ in a terminal multiplexer, e.g. [tmux](https://github.com/tmux/tmux/wiki).
 
 ## Output
 
