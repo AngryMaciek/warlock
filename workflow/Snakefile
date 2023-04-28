@@ -104,19 +104,22 @@ rule prepare_configfiles:
         LOG_local_stdout = os.path.join(
             "{outdir}",
             "logs",
-            "prepare_configfiles.{runID}.stdout.log"
+            "{runID}",
+            "prepare_configfiles.stdout.log"
         ),
         LOG_local_stderr = os.path.join(
             "{outdir}",
             "logs",
-            "prepare_configfiles.{runID}.stderr.log"
+            "{runID}",
+            "prepare_configfiles.stderr.log"
         )
 
     benchmark:
         os.path.join(
             "{outdir}",
             "logs",
-            "prepare_configfiles.{runID}.benchmark.log"
+            "{runID}",
+            "prepare_configfiles.benchmark.log"
         )
 
     run:
@@ -167,7 +170,8 @@ rule run_demon:
         LOG_cluster_log = os.path.join(
             "{outdir}",
             "logs",
-            "run_demon.{runID}.cluster.log"
+            "{runID}",
+            "run_demon.cluster.log"
         )
 
     threads: 1
@@ -176,19 +180,22 @@ rule run_demon:
         LOG_local_stdout = os.path.join(
             "{outdir}",
             "logs",
-            "run_demon.{runID}.stdout"
+            "{runID}",
+            "run_demon.stdout"
         ),
         LOG_local_stderr = os.path.join(
             "{outdir}",
             "logs",
-            "run_demon.{runID}.stderr"
+            "{runID}",
+            "run_demon.stderr"
         )
 
     benchmark:
         os.path.join(
             "{outdir}",
             "logs",
-            "run_demon.{runID}.benchmark.log"
+            "{runID}",
+            "run_demon.benchmark.log"
         )
 
     shell:

@@ -121,6 +121,7 @@ case "$ENV" in
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/local" \
             --cores="$CORES" \
+            --nolock \
             all
         ;;
     slurm)
@@ -128,6 +129,7 @@ case "$ENV" in
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/slurm" \
             --cores="$CORES" \
+            --nolock \
             all
         ;;
 esac
