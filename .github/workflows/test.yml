@@ -7,7 +7,7 @@
 #
 ###############################################################################
 ---
-name: ci
+name: pipeline-testruns
 
 on: push
 
@@ -15,6 +15,7 @@ jobs:
 
   pipeline-testruns:
     runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -30,8 +31,8 @@ jobs:
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
         with:
-          mamba-version: "*"
-          channels: conda-forge
+          miniforge-variant: Mambaforge
+          channels: conda-forge,defaults
           channel-priority: true
           auto-update-conda: true
           environment-file: environment.yml
@@ -60,7 +61,7 @@ jobs:
         run: >
             g++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/usr/share/miniconda/envs/warlock/include
+            -I/usr/share/miniconda3/envs/warlock/include
             -lm
 
       - name: Compile demon (macOS)
@@ -69,12 +70,12 @@ jobs:
         run: >
             clang++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/usr/local/miniconda/envs/warlock/include
+            -I/Users/runner/miniconda3/envs/warlock/include
             -lm
 
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
-      # is expensive; its faster to run the tests one-by-one. 
+      # is expensive; its faster to run the tests one-by-one.
 
       - name: Run the pipeline (test1) (Ubuntu)
         shell: bash -l {0}
@@ -91,6 +92,10 @@ jobs:
             bash warlock.sh
             --configfile tests/test1/config-macOS.yml
             --environment local
+
+      - name: Cleanup (test1)
+        shell: bash -l {0}
+        run: rm -rf tests/test1/output
 
       - name: Run the pipeline (test2) (Ubuntu)
         shell: bash -l {0}
@@ -110,6 +115,10 @@ jobs:
             --environment local
             --cores 4
 
+      - name: Cleanup (test2)
+        shell: bash -l {0}
+        run: rm -rf tests/test2/output
+
       - name: Run the pipeline (test3) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
@@ -128,4 +137,7 @@ jobs:
             --environment local
             --cores 2
 
+      - name: Cleanup (test3)
+        shell: bash -l {0}
+        run: rm -rf tests/test3/output
 ...

@@ -1,12 +1,15 @@
 [![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
 [![ci](https://github.com/AngryMaciek/warlock/workflows/ci/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci)
+[![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/warlock/badge/master)](https://www.codefactor.io/repository/github/angrymaciek/warlock/overview/master)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/blob/master/LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7435093.svg)](https://doi.org/10.5281/zenodo.7435093)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7435093.svg)](https://doi.org/10.5281/zenodo.7435093)
+[![preprint](https://img.shields.io/badge/preprint-arXiv-red)](https://arxiv.org/abs/2301.07808)
+[![Twitter](https://img.shields.io/twitter/follow/angrymaciek.svg?style=social&label=Follow)](https://twitter.com/search?l=&q=%23warlock%20from%3Aangrymaciek%20OR%20from%3Arobjohnnoble)
 
-# _warlock_
+# _warlock_ 🧙‍♂️
 
 [_demon_](https://github.com/robjohnnoble/demon_model) (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution.
 
@@ -94,7 +97,9 @@ After each pipeline run the main output directory will contain three subdirector
 
 ## Example
 
-Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb) we prepared.
+Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb) we prepared.  
+Alternatively, feel free to run a small test script on your local machine with
+`bash testscript.sh`.
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  

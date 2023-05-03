@@ -15,17 +15,17 @@
 # Path to the cloned repository
 # (absolute path is required, also: do not use "~" character -
 # some HPC clusters evaluate it differently on login & computing nodes)
-workflow_repo_path: "/home/runner/work/warlock/warlock"
+workflow_repo_path: "{{ WORKFLOW_REPO_PATH }}"
 
 # Path for the output directory
 # (absolute path is required, also: do not use "~" character -
 # some HPC clusters evaluate it differently on login & computing nodes)
-workflow_analysis_outdir: "/home/runner/work/warlock/warlock/tests/test1/output"
+workflow_analysis_outdir: "{{ WORKFLOW_REPO_PATH }}/tests/localtest/output"
 
 ### DEMON PARAMETERS ###
 
 # spatial_structure
-demon_log2_deme_carrying_capacity: 7
+demon_log2_deme_carrying_capacity: 8
 
 # dispersal
 demon_migration_type: 0
@@ -40,7 +40,7 @@ demon_mu_driver_migration: 0.01
 demon_passenger_pop_threshold: -1
 
 # fitness_effects
-demon_normal_birth_rate: 0.9
+demon_normal_birth_rate: [0.8, 0.9]
 demon_baseline_death_rate: 0
 demon_s_driver_birth: 0.1
 demon_s_passenger: 0

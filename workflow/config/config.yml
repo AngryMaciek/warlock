@@ -38,7 +38,7 @@ demon_mu_driver_birth:
 demon_mu_passenger:
 demon_mu_driver_migration:
 demon_passenger_pop_threshold:
-  
+
 # fitness_effects
 demon_normal_birth_rate:
 demon_baseline_death_rate:
