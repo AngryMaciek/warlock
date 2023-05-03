@@ -70,7 +70,7 @@ jobs:
         run: >
             clang++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
-            -I/usr/local/miniconda3/envs/warlock/include
+            -I/Users/runner/miniconda3/envs/warlock/include
             -lm
 
       # Run the tests sequentially;
