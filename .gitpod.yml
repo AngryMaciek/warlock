@@ -22,7 +22,7 @@ tasks:
       echo "Compiling demon..."
       g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I.warlock/include -lm
       echo "Ready to work!"
-      echo "Remembet to switch to a feature branch before starting the development :)"
+      echo "Remember to switch to a feature branch before starting the development :)"
 
 github:
   prebuilds:
