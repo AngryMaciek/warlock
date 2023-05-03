@@ -1,5 +1,5 @@
 [![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
-[![ci](https://github.com/AngryMaciek/warlock/workflows/ci/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci)
+[![ci-pipeline](https://github.com/AngryMaciek/warlock/workflows/pipeline-testruns/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Apipeline-testruns)
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/warlock/badge/master)](https://www.codefactor.io/repository/github/angrymaciek/warlock/overview/master)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
