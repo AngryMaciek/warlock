@@ -76,13 +76,13 @@ jobs:
       # This could be parallelized in the CI but setting up conda
       # is expensive; its faster to run the tests one-by-one. 
 
-      #- name: Run the pipeline (test1) (Ubuntu)
-      #  shell: bash -l {0}
-      #  if: matrix.os == 'ubuntu-20.04'
-      #  run: >
-      #      bash warlock.sh
-      #      --configfile tests/test1/config-Ubuntu.yml
-      #      --environment local
+      - name: Run the pipeline (test1) (Ubuntu)
+        shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
+        run: >
+            bash warlock.sh
+            --configfile tests/test1/config-Ubuntu.yml
+            --environment local
 
       - name: Run the pipeline (test1) (macOS)
         shell: bash -l {0}
