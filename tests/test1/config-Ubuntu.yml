@@ -38,7 +38,7 @@ demon_mu_driver_birth: "1e-05"
 demon_mu_passenger: 0.001
 demon_mu_driver_migration: 0.01
 demon_passenger_pop_threshold: -1
-  
+
 # fitness_effects
 demon_normal_birth_rate: 0.9
 demon_baseline_death_rate: 0
