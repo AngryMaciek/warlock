@@ -1,0 +1,46 @@
+###############################################################################
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 03-05-2023
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+name: tag
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+
+  tag:
+    runs-on: ubuntu-20.04
+    name: ubuntu-20.04
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+            token: ${{ secrets.CHANGELOG_TOKEN }}
+            submodules: "true"
+
+      - name: Check version bump
+        run: |
+          GIT='git --git-dir='$PWD'/.git'
+          NEW_COMMIT_VERSION="$(cat VERSION)"
+          $GIT checkout HEAD~1
+          PREVIOUS_COMMIT_VERSION="$(cat VERSION)"
+          $GIT checkout -
+          if [[ "$NEW_COMMIT_VERSION" != "$PREVIOUS_COMMIT_VERSION" ]]
+          then
+              $GIT tag $NEW_COMMIT_VERSION
+              $GIT push origin $NEW_COMMIT_VERSION
+          fi
+
+...
