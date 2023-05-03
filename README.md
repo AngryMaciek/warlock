@@ -9,7 +9,7 @@
 [![preprint](https://img.shields.io/badge/preprint-arXiv-red)](https://arxiv.org/abs/2301.07808)
 [![Twitter](https://img.shields.io/twitter/follow/angrymaciek.svg?style=social&label=Follow)](https://twitter.com/search?l=&q=%23warlock%20from%3Aangrymaciek%20OR%20from%3Arobjohnnoble)
 
-# _warlock_
+# _warlock_ 🧙‍♂️
 
 [_demon_](https://github.com/robjohnnoble/demon_model) (deme-based oncology model) is a flexible framework for modelling intra-tumour population genetics with varied spatial structures and modes of cell dispersal. It is primarly designed for computational biologists and mathematicians who work in the field of ecology on a cellular level; investiaging mechanisms behind tumour evolution.
 
