@@ -7,7 +7,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7435093.svg)](https://doi.org/10.5281/zenodo.7435093)
 [![preprint](https://img.shields.io/badge/preprint-arXiv-red)](https://arxiv.org/abs/2301.07808)
-[![Twitter](https://img.shields.io/twitter/follow/angrymaciek.svg?style=social&label=Follow)](https://twitter.com/search?l=&q=%23warlock%20from%3Aangrymaciek%20from%3Arobjohnnoble)
+[![Twitter](https://img.shields.io/twitter/follow/angrymaciek.svg?style=social&label=Follow)](https://twitter.com/search?l=&q=%23warlock%20from%3Aangrymaciek%20OR%20from%3Arobjohnnoble)
 
 # _warlock_
 
