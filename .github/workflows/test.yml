@@ -31,8 +31,8 @@ jobs:
       - name: Setup miniconda & conda env
         uses: conda-incubator/setup-miniconda@v2
         with:
-          mamba-version: "*"
-          channels: conda-forge
+          miniforge-variant: Mambaforge
+          channels: conda-forge,defaults
           channel-priority: true
           auto-update-conda: true
           environment-file: environment.yml
