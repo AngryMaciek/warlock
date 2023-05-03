@@ -92,6 +92,10 @@ jobs:
             --configfile tests/test1/config-macOS.yml
             --environment local
 
+      - name: Cleanup (test1)
+        shell: bash -l {0}
+        run: rm -rf tests/test1/output
+
       - name: Run the pipeline (test2) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
@@ -109,6 +113,10 @@ jobs:
             --configfile tests/test2/config-macOS.yml
             --environment local
             --cores 4
+
+      - name: Cleanup (test2)
+        shell: bash -l {0}
+        run: rm -rf tests/test2/output
 
       - name: Run the pipeline (test3) (Ubuntu)
         shell: bash -l {0}
@@ -128,4 +136,7 @@ jobs:
             --environment local
             --cores 2
 
+      - name: Cleanup (test3)
+        shell: bash -l {0}
+        run: rm -rf tests/test3/output
 ...
