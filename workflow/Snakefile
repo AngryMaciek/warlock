@@ -181,13 +181,13 @@ rule run_demon:
             "{outdir}",
             "logs",
             "{runID}",
-            "run_demon.stdout"
+            "run_demon.stdout.log"
         ),
         LOG_local_stderr = os.path.join(
             "{outdir}",
             "logs",
             "{runID}",
-            "run_demon.stderr"
+            "run_demon.stderr.log"
         )
 
     benchmark:
