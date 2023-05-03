@@ -92,14 +92,14 @@ jobs:
             --configfile tests/test1/config-macOS.yml
             --environment local
 
-      #- name: Run the pipeline (test2) (Ubuntu)
-      #  shell: bash -l {0}
-      #  if: matrix.os == 'ubuntu-20.04'
-      #  run: >
-      #      bash warlock.sh
-      #      --configfile tests/test2/config-Ubuntu.yml
-      #      --environment local
-      #      --cores 4
+      - name: Run the pipeline (test2) (Ubuntu)
+        shell: bash -l {0}
+        if: matrix.os == 'ubuntu-20.04'
+        run: >
+            bash warlock.sh
+            --configfile tests/test2/config-Ubuntu.yml
+            --environment local
+            --cores 4
 
       - name: Run the pipeline (test2) (macOS)
         shell: bash -l {0}
