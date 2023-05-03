@@ -4,8 +4,9 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/blob/master/LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7435093.svg)](https://doi.org/10.5281/zenodo.7435093)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7435093.svg)](https://doi.org/10.5281/zenodo.7435093)
+[![preprint](https://img.shields.io/badge/preprint-arXiv-red)](https://arxiv.org/abs/2301.07808)
 
 # _warlock_
 
