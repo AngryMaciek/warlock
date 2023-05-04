@@ -1,0 +1,46 @@
+###############################################################################
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 04-05-2023
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+name: CHANGELOG.md
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  update-changelog:
+    name: ubuntu-20.04
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          submodules: "true"
+          token: ${{ secrets.CHANGELOG_TOKEN }}
+
+      - name: Update CHANGELOG.md file
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ secrets.CHANGELOG_TOKEN }}
+          tag: ${{ github.ref_name }}
+          excludeTypes: docs,other
+          includeRefIssues: false
+          reverseOrder: true
+
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: master
+          commit_message: 'docs: CHANGELOG.md auto update'
+          file_pattern: CHANGELOG.md
+          push_options: --force
+...
