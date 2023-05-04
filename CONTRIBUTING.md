@@ -2,9 +2,7 @@
 
 ## Reporting bugs
 
-Before reporting a bug, try to search for a similar problem in the *Issues* section on GitHub. Clear the search bar to include closed issues in the search and type your phrase.
-
-If you have not found a relevant issue, you can report the bug in the *Issues* section. When you click on *New issue*, several templates will be displayed — please pick *Bug Report*. Carefully fill out the template and submit the issue.
+Before reporting a bug, try to search for a similar problem in the *Issues* section on GitHub. Clear the search bar to include closed issues in the search and type your phrase. When you click on *New issue*, several templates will be displayed — please pick *Bug Report*. Carefully fill out the template and submit the issue.
 
 ## Requesting features
 
@@ -12,11 +10,12 @@ If you have an idea for improvement, you can submit your proposal in the *Issues
 
 ## Local development environment setup
 
-Just follow instructions specified in the [README](README.md#installation) file and you are good to code!
+Please follow instructions specified in the [README](README.md#installation) file and you are good to code!
 
 ## Ephemeral development environment
 
-You are more then welcome to contribute to our codebase from the cloud! We set up an ephemeral [Gitpod](https://www.gitpod.io) environment for all the developers who prefer coding from a remote server.
+You are more then welcome to contribute to our codebase from the cloud!  
+We set up an ephemeral [Gitpod](https://www.gitpod.io) environment for all the developers who prefer coding from a remote server.
 
 Just click on this cool button below:  
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
@@ -68,4 +67,5 @@ The general structure of _Conventional Commits_ is as follows:
 
 ## Merging the pull request
 
-A pull request can only be merged after it completed all of the checks performed by CI. After a manual review by one of the maintainers, it can be merged into `master`.
+A pull request can only be merged after it completed all of the checks performed by CI.  
+After a manual review by one of the maintainers, it can be merged into `master`.
