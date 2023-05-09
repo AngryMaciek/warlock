@@ -31,7 +31,7 @@ jobs:
         run: docker build -t angrymaciek/warlock:latest .
 
       - name: Container testrun
-        run: docker run --name warlock warlock bash -c "source ~/.bashrc; bash testscript.sh"
+        run: docker run --name warlock angrymaciek/warlock bash -c "source ~/.bashrc; bash testscript.sh"
 
       - name: Publish image to DockerHub
         env:
