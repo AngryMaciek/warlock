@@ -89,7 +89,7 @@ Assuming the Docker Engine is running locally please build the image with:
 ```
 docker build -t warlock:latest .
 ```
-To test the container one can the following bash script:
+To test the container one can execute the following bash command:
 ```
 docker run --name warlock warlock bash -c "source ~/.bashrc; bash testscript.sh"
 ```
