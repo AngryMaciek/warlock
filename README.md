@@ -97,7 +97,7 @@ Finally, enter the container to start your work with:
 ```
 docker run -it warlock:latest
 ```
-Alternatively, please note that the image is also uploaded to [DockerHub](https://hub.docker.com/repository/docker/angrymaciek/warlock/), one may download it with:
+Alternatively, please note that the image is also uploaded to [DockerHub](https://hub.docker.com/r/angrymaciek/warlock), one may download it with:
 ```
 docker pull angrymaciek/warlock:{TAG}
 ```
