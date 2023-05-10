@@ -1,0 +1,45 @@
+###############################################################################
+#
+#   AUTHOR: Maciej_Bak
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 07-05-2023
+#   LICENSE: Apache_2.0
+#
+###############################################################################
+---
+name: Docker
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  Docker:
+    name: ubuntu-20.04
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          submodules: "true"
+
+      - name: Build Docker image
+        run: docker build -t angrymaciek/warlock:latest .
+
+      - name: Container testrun
+        run: docker run --name warlock angrymaciek/warlock bash -c "source ~/.bashrc; bash testscript.sh"
+
+      - name: Publish image to DockerHub
+        env:
+          docker_username: ${{ secrets.DOCKER_USERNAME }}
+          docker_password: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          repo_name="warlock"
+          tag=${GITHUB_REF##*/}
+          docker tag angrymaciek/${repo_name} angrymaciek/${repo_name}:${tag}
+          echo $docker_password | docker login -u $docker_username --password-stdin
+          docker push angrymaciek/${repo_name}:${tag}
+...

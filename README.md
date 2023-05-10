@@ -2,6 +2,7 @@
 [![ci-pipeline](https://github.com/AngryMaciek/warlock/workflows/ci-pipeline/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci-pipeline)
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/warlock/badge/master)](https://www.codefactor.io/repository/github/angrymaciek/warlock/overview/master)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb)
+[![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/r/angrymaciek/warlock)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -79,6 +80,28 @@ Example command for a local workflow execution:
 ```
 bash warlock.sh --configfile {PATH} --environment local
 ```
+
+### Docker container
+
+We have additionally prepared a development/execution Docker image which one may use in order to
+run _warlock_ in a fully encapsulated environment (that is, a container).  
+Assuming the Docker Engine is running locally please build the image with:
+```
+docker build -t warlock:latest .
+```
+To test the container one can execute the following bash command:
+```
+docker run --name warlock warlock bash -c "source ~/.bashrc; bash testscript.sh"
+```
+Finally, enter the container to start your work with:
+```
+docker run -it warlock:latest
+```
+Alternatively, please note that the image is also uploaded to [DockerHub](https://hub.docker.com/repository/docker/angrymaciek/warlock/), one may download it with:
+```
+docker pull angrymaciek/warlock:{TAG}
+```
+
 
 ### SLURM cluster
 
