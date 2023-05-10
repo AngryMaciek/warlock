@@ -81,6 +81,28 @@ Example command for a local workflow execution:
 bash warlock.sh --configfile {PATH} --environment local
 ```
 
+### Docker container
+
+We have additionally prepared a development/execution Docker image which one may use in order to
+run _warlock_ in a fully reproducible container.  
+Assuming the Docker Engine is running locally please build the image with:
+```
+docker build -t warlock:latest .
+```
+To test the conrainer one can the following bash script:
+```
+docker run --name warlock warlock bash -c "source ~/.bashrc; bash testscript.sh"
+```
+Finally, enter the container to start your work with:
+```
+docker run -it warlock:latest
+```
+Alternatively, please note that the image is also uploaded to [DockerHub](https://hub.docker.com/repository/docker/angrymaciek/warlock/), one may download it with:
+```
+docker pull angrymaciek/warlock:{TAG}
+```
+
+
 ### SLURM cluster
 
 Example command for a cluster-supported workflow execution:
