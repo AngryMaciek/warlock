@@ -41,5 +41,6 @@ jobs:
           tag=${GITHUB_REF##*/}
           docker tag angrymaciek/${repo_name} angrymaciek/${repo_name}:${tag}
           echo $docker_password | docker login -u $docker_username --password-stdin
+          docker push angrymaciek/${repo_name}:latest
           docker push angrymaciek/${repo_name}:${tag}
 ...
