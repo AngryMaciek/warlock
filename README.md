@@ -99,7 +99,7 @@ docker run -it warlock:latest
 ```
 Alternatively, please note that the image is also uploaded to [DockerHub](https://hub.docker.com/r/angrymaciek/warlock), one may download it with:
 ```
-docker pull angrymaciek/warlock:{TAG}
+docker pull angrymaciek/warlock:latest
 ```
 
 
