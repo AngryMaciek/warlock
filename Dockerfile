@@ -28,8 +28,8 @@ ENV LANG C.UTF-8
 ENV SHELL /bin/bash
 
 ##### COPY REPOSITORY #####
-COPY . warlock
 WORKDIR warlock
+COPY . .
 
 RUN apt-get update && apt-get upgrade -y \
   && apt-get autoremove -y \
