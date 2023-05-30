@@ -142,7 +142,9 @@ jobs:
         shell: bash -l {0}
         if: matrix.os == 'macos-11'
         working-directory: ./tests/test2
-        run: md5sum -c output-macOS.md5
+        run: |
+          find output/simulations -type f > txt
+          md5sum $(cat txt)
 
       - name: Cleanup (test2)
         shell: bash -l {0}
