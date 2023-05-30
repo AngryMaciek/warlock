@@ -45,6 +45,11 @@ jobs:
           conda info -a
           conda list
 
+      - name: Install md5sum (macOS)
+        shell: bash -l {0}
+        if: matrix.os == 'macos-11'
+        run: brew install md5sha1sum
+
       - name: Print compiler path (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
