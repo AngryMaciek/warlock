@@ -1,10 +1,3 @@
-6c4a3d41423fa1e69d57bd55aaac95c9  output/configfiles/00000.dat
-bc211a5e69e9829570c678b8ee7b4dae  output/logs/00000/run_demon.stderr.log
-d41d8cd98f00b204e9800998ecf8427e  output/logs/00000/prepare_configfiles.stdout.log
-dff63ba0088511fc472b9d27cb1d0a44  output/logs/00000/run_demon.benchmark.log
-f83ac6f1f628954a039d481379745d1d  output/logs/00000/prepare_configfiles.benchmark.log
-d41d8cd98f00b204e9800998ecf8427e  output/logs/00000/prepare_configfiles.stderr.log
-544b08540002b8de45a5882f2f759022  output/logs/00000/run_demon.stdout.log
 ad04ba3d5fe30441638d8604eef76197  output/simulations/00000/output_birthratesgrid.dat
 01ea9f533e85b5465da57d04a0ff6c92  output/simulations/00000/phylo.dat
 d41d8cd98f00b204e9800998ecf8427e  output/simulations/00000/driver_matrix.dat
@@ -17,7 +10,7 @@ d41d8cd98f00b204e9800998ecf8427e  output/simulations/00000/matrix.dat
 49f01be8cd88ff11cde315af851b3960  output/simulations/00000/output_genotype_properties.dat
 908b1842ad34dc969cb94cd3b91d4868  output/simulations/00000/clones.dat
 88cc374ca6f4e537360a19622dc192b6  output/simulations/00000/output_passengersgrid.dat
-98d014067512aaec83e4f11edffad57e  output/simulations/00000/error_log.dat
+90e5c94ad365e86b8aea7324093b83b9  output/simulations/00000/error_log.dat
 975d6257ea7f14e35b5dc701e44444af  output/simulations/00000/output_driver_allele_counts.dat
 f1f16323b1d001d7f11a1180db2846ca  output/simulations/00000/output.dat
 c7e3f1a01b061015228d89dfa5e09770  output/simulations/00000/output_driver_genotype_counts.dat
