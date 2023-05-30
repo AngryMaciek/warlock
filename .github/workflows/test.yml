@@ -93,6 +93,10 @@ jobs:
             --configfile tests/test1/config-macOS.yml
             --environment local
 
+      - name: Check md5 (test1)
+        shell: bash -l {0}
+        run: md5sum -c output.md5
+
       - name: Cleanup (test1)
         shell: bash -l {0}
         run: rm -rf tests/test1/output
