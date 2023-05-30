@@ -95,6 +95,7 @@ jobs:
 
       - name: Check md5 (test1)
         shell: bash -l {0}
+        working-directory: ./tests/test1
         run: md5sum -c output.md5
 
       - name: Cleanup (test1)
