@@ -40,7 +40,7 @@ def CreateConfigFilesCrossProduct():
     list_of_lists = [config[key] for key in variable_params]
     cartesian_products = [_ for _ in itertools.product(*list_of_lists)]
     N = prod([len(config[k]) for k in variable_params])
-    hexnames = [hex(_).split("x")[-1].upper().rjust(5, "0") for _ in range(N)]
+    hexnames = [hex(_).split("x")[-1].upper().rjust(8, "0") for _ in range(N)]
 
     # dict of configfiles for demon:
     # run ID -> demon config template rendered string
