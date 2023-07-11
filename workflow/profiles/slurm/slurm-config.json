@@ -2,7 +2,7 @@
 
   "run_demon":
   {
-    "time": "23:59:59",
+    "time": "48:00:00",
     "cpus-per-task":"1",
     "mem":"10G",
     "job-name": "{rule}.{wildcards.runID}",
