@@ -13,3 +13,6 @@
 
 # conda env
 .warlock/
+
+# core demon model
+resources/demon_model
