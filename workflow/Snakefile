@@ -166,7 +166,6 @@ rule run_demon:
         )
 
     params:
-        STR_runID = "{runID}",
         LOG_cluster_log = os.path.join(
             "{outdir}",
             "logs",
@@ -220,15 +219,90 @@ rule run_demon:
         """
 
 
+rule generate_summary_plots:
+    """
+    Generate per-simulation summary plots with 'demonanalysis' pkg.
+    """
+    input:
+        DIR_simulations_outdir = os.path.join(
+            "{outdir}",
+            "simulations",
+            "{runID}"
+        ),
+        SCRIPT_generate_summary_plots = os.path.join(
+            config["workflow_repo_path"],
+            "workflow",
+            "scripts",
+            "generate-summary-plots.R",
+        )
+
+    output:
+        DIR_analyses_outdir = directory(
+            os.path.join(
+                "{outdir}",
+                "analyses",
+                "{runID}"
+            )
+        )
+
+    params:
+        LOG_cluster_log = os.path.join(
+            "{outdir}",
+            "logs",
+            "{runID}",
+            "generate_summary_plots.cluster.log"
+        )
+
+    threads: 1
+
+    log:
+        LOG_local_stdout = os.path.join(
+            "{outdir}",
+            "logs",
+            "{runID}",
+            "generate_summary_plots.stdout.log"
+        ),
+        LOG_local_stderr = os.path.join(
+            "{outdir}",
+            "logs",
+            "{runID}",
+            "generate_summary_plots.stderr.log"
+        )
+
+    benchmark:
+        os.path.join(
+            "{outdir}",
+            "logs",
+            "{runID}",
+            "generate_summary_plots.benchmark.log"
+        )
+
+    conda:
+        "envs/warlock-r.yml"
+
+    shell:
+        """
+        (mkdir -p {output.DIR_analyses_outdir} \
+        && \
+        sleep 5 \
+        && \
+        Rscript {input.SCRIPT_generate_summary_plots} \
+        --input {input.DIR_simulations_outdir} \
+        --output {output.DIR_analyses_outdir}) \
+        1> {log.LOG_local_stdout} \
+        2> {log.LOG_local_stderr}
+        """
+
+
 rule all:
     """
     Target rule gathering final output of the workflow.
     """
     input:
-        DIR_simulations_outdir = expand(
+        DIR_analyses_outdir = expand(
             os.path.join(
                 "{outdir}",
-                "simulations",
+                "analyses",
                 "{runID}"
             ),
             outdir = config["workflow_analysis_outdir"],
