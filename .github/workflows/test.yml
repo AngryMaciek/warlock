@@ -95,6 +95,7 @@ jobs:
             --environment local
 
       - name: logs
+        if: always()
         run: |
             cat /home/runner/work/warlock/warlock/tests/test1/output/logs/00000000/generate_summary_plots.stdout.log
             cat /home/runner/work/warlock/warlock/tests/test1/output/logs/00000000/generate_summary_plots.stderr.log
