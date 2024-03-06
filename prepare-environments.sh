@@ -34,5 +34,5 @@ conda deactivate
 conda activate $ENVPATH
 
 # strange error often appears, installation needs to be called twice
-Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)"
-Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)"
+Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)" || true
+Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)" || true

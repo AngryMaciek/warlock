@@ -56,6 +56,16 @@ jobs:
             -I/usr/share/miniconda3/envs/warlock/include
             -lm
 
+      - name: Prepare internal conda envs (Ubuntu)
+        shell: bash -l {0}
+        run: >
+            snakemake
+            --snakefile="workflow/Snakefile" \
+            --configfile="tests/test1/config-Ubuntu.yml" \
+            --use-conda \
+            --conda-create-envs-only \
+            all
+
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
       # is expensive; its faster to run the tests one-by-one.
