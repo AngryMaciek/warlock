@@ -109,7 +109,9 @@ jobs:
             bash warlock.sh
             --configfile tests/test2/config-Ubuntu.yml
             --environment local
-            --cores 4
+            --cores 4;
+            /home/runner/work/warlock/warlock/tests/test1/output/logs/00000000/generate_summary_plots.stdout.log;
+            /home/runner/work/warlock/warlock/tests/test1/output/logs/00000000/generate_summary_plots.stderr.log;
 
       - name: Check md5 (test2) (Ubuntu)
         shell: bash -l {0}
