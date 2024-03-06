@@ -1,3 +1,6 @@
 [submodule "demon_model"]
 	path = resources/demon_model
 	url = https://github.com/robjohnnoble/demon_model
+[submodule "demonanalysis"]
+	path = resources/demonanalysis
+	url = https://github.com/robjohnnoble/demonanalysis
