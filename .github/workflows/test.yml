@@ -67,6 +67,21 @@ jobs:
             --cores 1
             all
 
+      - name: Install demonanalysis into the env (Ubuntu)
+        shell: bash -l {0}
+        run: >
+            for file in .snakemake/conda/*.yaml; do
+                if [ -f "$file" ]; then
+                    if grep -q "name: warlock-r" "$file"; then
+                        ENVPATH="${file%.yaml}"
+                        break
+                    fi
+                fi
+            done
+            conda deactivate
+            conda activate $ENVPATH
+            conda info
+
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
       # is expensive; its faster to run the tests one-by-one.
