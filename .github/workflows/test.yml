@@ -14,12 +14,10 @@ on: push
 jobs:
 
   pipeline-testruns:
-    runs-on: ${{ matrix.os }}
-    name: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
+    name: ubuntu-20.04
     strategy:
       fail-fast: false
-      matrix:
-        os: ubuntu-20.04
 
     steps:
 
