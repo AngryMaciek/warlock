@@ -114,12 +114,17 @@ if [ -z "$CORES" ]; then
     CORES=1
 fi
 
+# in order to use R from conda-forge I need to set these env variables:
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
 # select a proper smk profile based on the command line args
 case "$ENV" in
     local)
         snakemake \
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/local" \
+            --use-conda \
             --cores="$CORES" \
             --nolock \
             all
@@ -128,6 +133,7 @@ case "$ENV" in
         snakemake \
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/slurm" \
+            --use-conda \
             --cores="$CORES" \
             --nolock \
             all
