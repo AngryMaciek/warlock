@@ -7,11 +7,13 @@
 #
 ###############################################################################
 
+# exit at a first command that exits with a !=0 status
+set -eo pipefail
+
 snakemake \
     --snakefile="workflow/Snakefile" \
     --configfile="tests/localtest/config-template.yml" \
-    --config workflow_repo_path="$PWD" \
-    --config workflow_analysis_outdir="$PWD/tests/localtest/output" \
+    --config workflow_repo_path="$PWD" workflow_analysis_outdir="$PWD/tests/localtest/output" \
     --use-conda \
     --conda-create-envs-only \
     --cores 1 \

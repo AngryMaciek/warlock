@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, macos-11]
+        os: ubuntu-20.04
 
     steps:
 
@@ -46,20 +46,10 @@ jobs:
           conda list
           conda clean --all --yes
 
-      - name: Install md5sum (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        run: brew install md5sha1sum
-
       - name: Print compiler path (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         run: which g++
-
-      - name: Print compiler path (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        run: which clang++
 
       - name: Compile demon (Ubuntu)
         shell: bash -l {0}
@@ -68,15 +58,6 @@ jobs:
             g++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
             -I/usr/share/miniconda3/envs/warlock/include
-            -lm
-
-      - name: Compile demon (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        run: >
-            clang++ resources/demon_model/src/demon.cpp
-            -o resources/demon_model/bin/demon
-            -I/Users/runner/miniconda3/envs/warlock/include
             -lm
 
       # Run the tests sequentially;
@@ -91,25 +72,11 @@ jobs:
             --configfile tests/test1/config-Ubuntu.yml
             --environment local
 
-      - name: Run the pipeline (test1) (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        run: >
-            bash warlock.sh
-            --configfile tests/test1/config-macOS.yml
-            --environment local
-
       - name: Check md5 (test1) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         working-directory: ./tests/test1
         run: md5sum -c output-Ubuntu.md5
-
-      - name: Check md5 (test1) (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        working-directory: ./tests/test1
-        run: md5sum -c output-macOS.md5
 
       - name: Cleanup (test1)
         shell: bash -l {0}
@@ -124,26 +91,11 @@ jobs:
             --environment local
             --cores 4
 
-      - name: Run the pipeline (test2) (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        run: >
-            bash warlock.sh
-            --configfile tests/test2/config-macOS.yml
-            --environment local
-            --cores 4
-
       - name: Check md5 (test2) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         working-directory: ./tests/test2
         run: md5sum -c output-Ubuntu.md5
-
-      - name: Check md5 (test2) (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        working-directory: ./tests/test2
-        run: md5sum -c output-macOS.md5
 
       - name: Cleanup (test2)
         shell: bash -l {0}
@@ -158,26 +110,11 @@ jobs:
             --environment local
             --cores 2
 
-      - name: Run the pipeline (test3) (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        run: >
-            bash warlock.sh
-            --configfile tests/test3/config-macOS.yml
-            --environment local
-            --cores 2
-
       - name: Check md5 (test3) (Ubuntu)
         shell: bash -l {0}
         if: matrix.os == 'ubuntu-20.04'
         working-directory: ./tests/test3
         run: md5sum -c output-Ubuntu.md5
-
-      - name: Check md5 (test3) (macOS)
-        shell: bash -l {0}
-        if: matrix.os == 'macos-11'
-        working-directory: ./tests/test3
-        run: md5sum -c output-macOS.md5
 
       - name: Cleanup (test3)
         shell: bash -l {0}

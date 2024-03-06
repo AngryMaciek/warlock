@@ -18,7 +18,7 @@ The following repository encapsulates _demon_ into an automated and reproducible
 
 ## Installation
 
-**The workflow is designed to run on Linux and macOS systems.**  
+**The workflow is designed to run on Linux systems.**  
 We have prepared a dedicated [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) recipe which will contain all prerequisites required to execute the workflow. Thus Anaconda/Miniconda package manager is a natural dependency (see [Appendix A](#appendix-a-miniconda-installation) for installation instructions.)
 
 1. Clone the repository and navigate inside that directory
@@ -35,14 +35,9 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
    conda activate warlock
    ```
 3. Compile _demon_
-   * Linux:
-     ```bash
-     g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
-     ```
-   * macOS:
-     ```bash
-     clang++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
-     ```
+   ```bash
+   g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
+   ```
 
     > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `warlock` environment to the compiler.
 
