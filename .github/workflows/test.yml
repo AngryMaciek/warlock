@@ -60,11 +60,11 @@ jobs:
         shell: bash -l {0}
         run: >
             snakemake
-            --snakefile="workflow/Snakefile" \
-            --configfile="tests/test1/config-Ubuntu.yml" \
-            --use-conda \
-            --conda-create-envs-only \
-            --cores 1 \
+            --snakefile="workflow/Snakefile"
+            --configfile="tests/test1/config-Ubuntu.yml"
+            --use-conda
+            --conda-create-envs-only
+            --cores 1
             all
 
       # Run the tests sequentially;
