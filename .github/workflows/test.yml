@@ -69,7 +69,7 @@ jobs:
 
       - name: Install demonanalysis into the env (Ubuntu)
         shell: bash -l {0}
-        run: >
+        run: |
             for file in .snakemake/conda/*.yaml; do
                 if [ -f "$file" ]; then
                     if grep -q "name: warlock-r" "$file"; then
