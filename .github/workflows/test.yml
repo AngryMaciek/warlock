@@ -43,8 +43,6 @@ jobs:
           conda info -a
           conda list
           conda clean --all --yes
-          ls
-          ls resources
 
       - name: Print compiler path (Ubuntu)
         shell: bash -l {0}
