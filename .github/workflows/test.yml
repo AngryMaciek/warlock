@@ -46,12 +46,10 @@ jobs:
 
       - name: Print compiler path (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         run: which g++
 
       - name: Compile demon (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         run: >
             g++ resources/demon_model/src/demon.cpp
             -o resources/demon_model/bin/demon
@@ -64,7 +62,6 @@ jobs:
 
       - name: Run the pipeline (test1) (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         run: >
             bash warlock.sh
             --configfile tests/test1/config-Ubuntu.yml
@@ -72,7 +69,6 @@ jobs:
 
       - name: Check md5 (test1) (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         working-directory: ./tests/test1
         run: md5sum -c output-Ubuntu.md5
 
@@ -82,7 +78,6 @@ jobs:
 
       - name: Run the pipeline (test2) (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         run: >
             bash warlock.sh
             --configfile tests/test2/config-Ubuntu.yml
@@ -91,7 +86,6 @@ jobs:
 
       - name: Check md5 (test2) (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         working-directory: ./tests/test2
         run: md5sum -c output-Ubuntu.md5
 
@@ -101,7 +95,6 @@ jobs:
 
       - name: Run the pipeline (test3) (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         run: >
             bash warlock.sh
             --configfile tests/test3/config-Ubuntu.yml
@@ -110,7 +103,6 @@ jobs:
 
       - name: Check md5 (test3) (Ubuntu)
         shell: bash -l {0}
-        if: matrix.os == 'ubuntu-20.04'
         working-directory: ./tests/test3
         run: md5sum -c output-Ubuntu.md5
 
