@@ -94,6 +94,12 @@ jobs:
             --configfile tests/test1/config-Ubuntu.yml
             --environment local
 
+      - name: logs
+        if: always()
+        run: |
+            cat /home/runner/work/warlock/warlock/tests/test1/output/logs/00000000/generate_summary_plots.stdout.log
+            cat /home/runner/work/warlock/warlock/tests/test1/output/logs/00000000/generate_summary_plots.stderr.log
+
       - name: Check md5 (test1) (Ubuntu)
         shell: bash -l {0}
         working-directory: ./tests/test1
