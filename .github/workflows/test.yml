@@ -80,8 +80,8 @@ jobs:
             done
             conda deactivate
             conda activate $ENVPATH
-            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)"
-            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)"
+            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)" || true
+            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)" || true
 
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
