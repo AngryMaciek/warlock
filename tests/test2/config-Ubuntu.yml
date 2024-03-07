@@ -36,7 +36,7 @@ demon_migration_rate_scales_with_K: 1
 # mutation_rates
 demon_mu_driver_birth: ["1e-06", "1e-05"]
 demon_mu_passenger: [0.001, 0.0025, 0.005]
-demon_mu_driver_migration: 0.0001
+demon_mu_driver_migration: 0.00001
 demon_passenger_pop_threshold: -1
 
 # fitness_effects
