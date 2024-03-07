@@ -16,3 +16,7 @@
 
 # core demon model
 resources/demon_model
+
+# test outputs
+tests/test1/output
+tests/test2/output
