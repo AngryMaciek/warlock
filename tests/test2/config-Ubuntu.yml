@@ -29,7 +29,7 @@ demon_log2_deme_carrying_capacity: [1, 2, 3, 4]
 
 # dispersal
 demon_migration_type: 0
-demon_init_migration_rate: ["2e-03"]
+demon_init_migration_rate: "2e-03"
 demon_migration_edge_only: 1
 demon_migration_rate_scales_with_K: 1
 
@@ -40,7 +40,7 @@ demon_mu_driver_migration: 0.001
 demon_passenger_pop_threshold: -1
 
 # fitness_effects
-demon_normal_birth_rate: [0.75, 0.8, 0.85, 0.9, 0.95]
+demon_normal_birth_rate: [0.8, 0.85, 0.9]
 demon_baseline_death_rate: 0
 demon_s_driver_birth: 0.1
 demon_s_passenger: 0
