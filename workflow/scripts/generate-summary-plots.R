@@ -67,8 +67,19 @@ if (opt$verbose) {
 # MAIN
 ###############################################################################
 
-plot_all_images(
-  path = opt$input_directory,
-  output_filename = "muller",
-  output_dir = opt$output_directory
-)
+fileConn = file(file.path(opt$output_directory, "muller.txt"))
+
+tryCatch({
+  plot_all_images(
+    path = opt$input_directory,
+    output_filename = "muller",
+    output_dir = opt$output_directory
+  )
+  writeLines("muller plots: OK | see file: muller.png", fileConn)
+}, error = function(e) {
+  # print the error message to the stderr
+  message(conditionMessage(e))
+  writeLines("muller plots: ERROR | see error stream", fileConn)
+})
+
+close(fileConn)
