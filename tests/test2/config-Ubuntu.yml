@@ -40,9 +40,9 @@ demon_mu_driver_migration: 0.001
 demon_passenger_pop_threshold: -1
 
 # fitness_effects
-demon_normal_birth_rate: [0.8, 0.85, 0.9]
+demon_normal_birth_rate: [0.8, 0.82, 0.84, 0.86, 0.88, 0.9]
 demon_baseline_death_rate: 0
-demon_s_driver_birth: 0.1
+demon_s_driver_birth: [0.1, 0.15]
 demon_s_passenger: 0
 demon_s_driver_migration: 0
 demon_max_relative_birth_rate: 10
@@ -53,7 +53,7 @@ demon_init_pop: 1
 demon_matrix_max: -1
 demon_max_pop: 10000
 demon_max_time: 86400
-demon_max_generations: 1000
+demon_max_generations: 2000
 demon_seed: 10
 demon_write_grid: 0
 demon_write_clones_file: 0
