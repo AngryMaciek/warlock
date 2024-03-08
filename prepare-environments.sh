@@ -10,7 +10,7 @@
 # exit at a first command that exits with a !=0 status
 set -eo pipefail
 
-snakemake \
+$CONDA_PREFIX/bin/snakemake \
     --snakefile="workflow/Snakefile" \
     --configfile="tests/localtest/config-template.yml" \
     --config workflow_repo_path="$PWD" workflow_analysis_outdir="$PWD/tests/localtest/output" \
