@@ -45,6 +45,11 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
    bash prepare-environments.sh
    ```
 
+5. Finally, feel free to verify the installation with a small test script
+   ```bash
+   bash testscript.sh
+   ```
+
 ## Configuration
 
 For a detailed description of all available simulation parameters please inspect [GitHub repository](https://github.com/robjohnnoble/demon_model) of the core _demon_ model.
@@ -116,12 +121,6 @@ Running large workflows with hundreds of cluster jobs might take very long; cons
 ## Output
 
 After each pipeline run the main output directory will contain three subdirectories: `configfiles`, `simulations` and `logs`. Each simulation run with a specific set of parameters is encoded by a 4-letter code. The first directory contains configuration files for each of the simulation runs; `simulations` contain all _demon_ output files; `logs` keep captured standard output and error streams for the commands.
-
-## Example
-
-Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb) we prepared.  
-Alternatively, feel free to run a small test script on your local machine with
-`bash testscript.sh`.
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
