@@ -8,5 +8,5 @@ resources/demon_model/src/demon.cpp \
 -I/srv/conda/envs/notebook/include/ \
 -lm
 
-#chmod +x prepare-environments.sh
-#bash -c 'CONDA_PREFIX="/opt/conda/envs/warlock" ./prepare-environments.sh'
+chmod +x prepare-environments.sh
+bash -c 'CONDA_PREFIX="/srv/conda/envs/notebook" ./prepare-environments.sh'
