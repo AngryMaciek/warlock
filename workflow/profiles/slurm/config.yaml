@@ -17,5 +17,6 @@ jobs: 4096
 rerun-incomplete: true
 keep-going: true
 latency-wait: 60
+conda-frontend: conda
 
 ...

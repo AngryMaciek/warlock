@@ -25,26 +25,26 @@ workflow_analysis_outdir: "/home/runner/work/warlock/warlock/tests/test2/output"
 ### DEMON PARAMETERS ###
 
 # spatial_structure
-demon_log2_deme_carrying_capacity: [7, 8]
+demon_log2_deme_carrying_capacity: [1, 2, 3, 4]
 
 # dispersal
 demon_migration_type: 0
-demon_init_migration_rate: ["1e-03", "2e-03"]
+demon_init_migration_rate: "2e-03"
 demon_migration_edge_only: 1
 demon_migration_rate_scales_with_K: 1
 
 # mutation_rates
-demon_mu_driver_birth: ["1e-05", "1e-04"]
-demon_mu_passenger: [0.001, 0.0025, 0.005]
-demon_mu_driver_migration: 0.01
+demon_mu_driver_birth: "1e-05"
+demon_mu_passenger: 0.001
+demon_mu_driver_migration: 0.001
 demon_passenger_pop_threshold: -1
 
 # fitness_effects
-demon_normal_birth_rate: 0.9
+demon_normal_birth_rate: [0.8, 0.82, 0.84, 0.86, 0.88, 0.9]
 demon_baseline_death_rate: 0
-demon_s_driver_birth: [0.1, 0.2]
+demon_s_driver_birth: 0.1
 demon_s_passenger: 0
-demon_s_driver_migration: [0, 0.1, 0.2]
+demon_s_driver_migration: 0
 demon_max_relative_birth_rate: 10
 demon_max_relative_migration_rate: 10
 

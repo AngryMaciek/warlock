@@ -32,11 +32,13 @@ WORKDIR warlock
 COPY . .
 
 RUN apt-get update && apt-get upgrade -y \
+  && apt-get install -y locales \
   && apt-get autoremove -y \
   && apt-get clean -y \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-##### INSTALL MAMBA + BUILD CONDA ENV #####
+##### INSTALL MAMBA + BUILD MAIN CONDA ENV #####
 RUN \
   conda install mamba -c conda-forge --yes \
   && mamba env create --file environment.yml \
@@ -50,3 +52,8 @@ RUN \
   -o resources/demon_model/bin/demon \
   -I /opt/conda/envs/warlock/include \
   -lm
+
+##### GENERATE INTERNAL ENVS & INSTALL DEPS #####
+RUN \
+  chmod +x prepare-environments.sh \
+  && bash -c 'CONDA_PREFIX="/opt/conda/envs/warlock" ./prepare-environments.sh'

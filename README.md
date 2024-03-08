@@ -1,7 +1,6 @@
 [![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
 [![ci-pipeline](https://github.com/AngryMaciek/warlock/workflows/ci-pipeline/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci-pipeline)
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/warlock/badge/master)](https://www.codefactor.io/repository/github/angrymaciek/warlock/overview/master)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb)
 [![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/r/angrymaciek/warlock)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/blob/master/LICENSE)
@@ -18,7 +17,7 @@ The following repository encapsulates _demon_ into an automated and reproducible
 
 ## Installation
 
-**The workflow is designed to run on Linux and macOS systems.**  
+**The workflow is designed to run on Linux systems.**  
 We have prepared a dedicated [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) recipe which will contain all prerequisites required to execute the workflow. Thus Anaconda/Miniconda package manager is a natural dependency (see [Appendix A](#appendix-a-miniconda-installation) for installation instructions.)
 
 1. Clone the repository and navigate inside that directory
@@ -35,16 +34,16 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
    conda activate warlock
    ```
 3. Compile _demon_
-   * Linux:
-     ```bash
-     g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
-     ```
-   * macOS:
-     ```bash
-     clang++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
-     ```
+   ```bash
+   g++ resources/demon_model/src/demon.cpp -o resources/demon_model/bin/demon -I$HOME/miniconda3/envs/warlock/include -lm
+   ```
 
     > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `warlock` environment to the compiler.
+
+4. Create internal environments and install dependencies
+   ```bash
+   bash prepare-environments.sh
+   ```
 
 ## Configuration
 

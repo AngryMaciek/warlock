@@ -11,12 +11,12 @@ on:
 jobs:
 
   assignee-reviewer:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: kentaro-m/auto-assign-action@v1.2.5
 
   conventional-title:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: morrisoncole/pr-lint-action@v1.7.0
         with:
