@@ -8,4 +8,4 @@ resources/demon_model/src/demon.cpp \
 -I/srv/conda/envs/notebook/include/ \
 -lm
 
-bash ../prepare-environments.sh
+bash prepare-environments.sh
