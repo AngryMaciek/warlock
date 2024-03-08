@@ -1,0 +1,8 @@
+.git/
+*~
+.DS_Store
+._*
+.snakemake/
+tests/test1/output
+tests/test2/output
+.ipynb_checkpoints/

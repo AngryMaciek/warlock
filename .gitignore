@@ -11,7 +11,7 @@
 # notebook checkpoints
 .ipynb_checkpoints/
 
-# conda env
+# conda env at GitPod
 .warlock/
 
 # core demon model
