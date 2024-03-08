@@ -99,8 +99,7 @@ jobs:
         working-directory: ./tests/test1
         run: >
             md5sum -c output-Ubuntu.md5;
-            ls tests/test1/output/analyses/00000000;
-            [ -e tests/test1/output/analyses/00000000/muller.txt ]
+            [ -e output/analyses/00000000/muller.txt ]
 
       - name: Cleanup (test1)
         shell: bash -l {0}
@@ -119,7 +118,7 @@ jobs:
         working-directory: ./tests/test2
         run: |
             md5sum -c output-Ubuntu.md5;
-            for dir in $(find tests/test2/output/analyses -type d); do
+            for dir in $(find output/analyses -type d); do
                 [ -e "$dir/muller.txt" ]
             done
 

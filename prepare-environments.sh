@@ -16,6 +16,7 @@ $CONDA_PREFIX/bin/snakemake \
     --config workflow_repo_path="$PWD" workflow_analysis_outdir="$PWD/tests/localtest/output" \
     --use-conda \
     --conda-create-envs-only \
+    --conda-frontend=conda \
     --cores 1 \
     --nolock \
     all
