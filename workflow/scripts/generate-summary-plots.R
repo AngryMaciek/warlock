@@ -16,31 +16,31 @@ Sys.setenv("LANGUAGE"="EN")
 options(warn = -1)
 
 # load libraries
-suppressPackageStartupMessages(suppressWarnings(library(demonanalysis)))
-suppressPackageStartupMessages(suppressWarnings(library(optparse)))
+library(demonanalysis)
+library(optparse)
 
 # list the command-line arguments
 option_list <- list(
-  make_option(c("--input"),
+  make_option("--input",
     action = "store_true",
     dest = "input_directory",
     type = "character",
     help = "Path to the warlock output directory."
   ),
-  make_option(c("--output"),
+  make_option("--output",
     action = "store_true",
     dest = "output_directory",
     type = "character",
     help = "Path for the output directory with plots."
   ),
-  make_option(c("--help"),
+  make_option("--help",
     action = "store_true",
     dest = "help",
     type = "logical",
     default = FALSE,
     help = "Show this information and exit."
   ),
-  make_option(c("--verbose"),
+  make_option("--verbose",
     action = "store_true",
     dest = "verbose",
     type = "logical",
