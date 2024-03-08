@@ -119,7 +119,7 @@ jobs:
         run: |
             md5sum -c output-Ubuntu.md5;
             for dir in $(find output/analyses -type d); do
-                echo $dir
+                ls $dir
             done
 
       - name: Cleanup (test2)
