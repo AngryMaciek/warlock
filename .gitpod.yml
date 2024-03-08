@@ -11,7 +11,7 @@ tasks:
     init: |
       echo "Building development environment..."
       mamba env create -f environment.yml --prefix ./.warlock
-      bash prepare-environments.sh
+      bash -c 'CONDA_PREFIX="/workspace/warlock/.warlock" ./prepare-environments.sh'
       echo "Development environment ready!"
     # adjust PS1 + activate dev. env. + compile demon
     command: |
