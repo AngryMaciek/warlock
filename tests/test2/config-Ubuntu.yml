@@ -29,14 +29,14 @@ demon_log2_deme_carrying_capacity: [1, 2, 3, 4]
 
 # dispersal
 demon_migration_type: 0
-demon_init_migration_rate: ["1e-03", "5e-03"]
+demon_init_migration_rate: "2e-03"
 demon_migration_edge_only: 1
 demon_migration_rate_scales_with_K: 1
 
 # mutation_rates
 demon_mu_driver_birth: "1e-05"
 demon_mu_passenger: 0.001
-demon_mu_driver_migration: 0.002
+demon_mu_driver_migration: 0.001
 demon_passenger_pop_threshold: -1
 
 # fitness_effects
