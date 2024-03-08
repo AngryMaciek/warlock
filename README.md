@@ -41,6 +41,11 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 
     > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `warlock` environment to the compiler.
 
+4. Create internal environments and install dependencies
+   ```bash
+   bash prepare-environments.sh
+   ```
+
 ## Configuration
 
 For a detailed description of all available simulation parameters please inspect [GitHub repository](https://github.com/robjohnnoble/demon_model) of the core _demon_ model.
