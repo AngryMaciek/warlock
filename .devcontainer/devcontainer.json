@@ -1,0 +1,15 @@
+{
+
+    "name": "dev",
+
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+
+    "customizations": {
+        "codespaces": {
+            "openFiles": []
+        }
+    }
+
+}
