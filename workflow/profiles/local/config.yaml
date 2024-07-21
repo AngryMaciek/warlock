@@ -12,6 +12,5 @@
 snakefile: "workflow/Snakefile"
 rerun-incomplete: true
 keep-going: true
-conda-frontend: conda
 
 ...
