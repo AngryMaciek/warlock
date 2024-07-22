@@ -53,11 +53,6 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
    bash testscript.sh
    ```
 
-5. Finally, feel free to verify the installation with a small test script
-   ```bash
-   bash testscript.sh
-   ```
-
 ## Configuration
 
 For a detailed description of all available simulation parameters please inspect [GitHub repository](https://github.com/robjohnnoble/demon_model) of the core _demon_ model.
