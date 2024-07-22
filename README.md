@@ -1,4 +1,3 @@
-[![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
 [![ci-pipeline](https://github.com/AngryMaciek/warlock/workflows/ci-pipeline/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci-pipeline)
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/warlock/badge/master)](https://www.codefactor.io/repository/github/angrymaciek/warlock/overview/master)
 [![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/r/angrymaciek/warlock)
@@ -40,9 +39,18 @@ We have prepared a dedicated [conda environment](https://docs.conda.io/projects/
 
     > Note: remember to adjust `miniconda3` (and its path) in the command above, in case you have a different manager installed on your system. All in all, the point is to provide the _include_ directory of your `warlock` environment to the compiler.
 
-4. Create internal environments and install dependencies
+4. [_demonanalysis_](https://github.com/robjohnnoble/demonanalysis) is a custom R package developed specifically for post-processing of simulation results; it needs to be installed manually into the conda environment.
    ```bash
-   bash prepare-environments.sh
+   # In order to use R from conda-forge one needs to set the following env variables, if unset:
+   LANG=en_US.UTF-8
+   LC_ALL=en_US.UTF-8
+   # Install demonanalysis
+   Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)"
+   ```
+
+5. Finally, feel free to verify the installation with a small test script
+   ```bash
+   bash testscript.sh
    ```
 
 5. Finally, feel free to verify the installation with a small test script

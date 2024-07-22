@@ -38,7 +38,7 @@ RUN apt-get update && apt-get upgrade -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-##### INSTALL MAMBA + BUILD MAIN CONDA ENV #####
+##### INSTALL MAMBA + BUILD CONDA ENV #####
 RUN \
   conda install mamba -c conda-forge --yes \
   && mamba env create --file environment.yml \
@@ -53,7 +53,6 @@ RUN \
   -I /opt/conda/envs/warlock/include \
   -lm
 
-##### GENERATE INTERNAL ENVS & INSTALL DEPS #####
+##### INSTALL DEMONANALYSIS #####
 RUN \
-  chmod +x prepare-environments.sh \
-  && bash -c 'CONDA_PREFIX="/opt/conda/envs/warlock" ./prepare-environments.sh'
+  bash -c "/opt/conda/envs/warlock/bin/Rscript -e \"devtools::install('resources/demonanalysis', upgrade=FALSE)\""
