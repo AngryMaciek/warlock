@@ -124,7 +124,6 @@ case "$ENV" in
         snakemake \
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/local" \
-            --use-conda \
             --cores="$CORES" \
             --nolock \
             all
@@ -133,7 +132,6 @@ case "$ENV" in
         snakemake \
             --configfile="$CONFIGFILE" \
             --profile="workflow/profiles/slurm" \
-            --use-conda \
             --cores="$CORES" \
             --nolock \
             all

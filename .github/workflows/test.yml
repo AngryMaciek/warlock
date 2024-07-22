@@ -44,11 +44,11 @@ jobs:
           conda list
           conda clean --all --yes
 
-      - name: Print compiler path (Ubuntu)
+      - name: Print compiler path
         shell: bash -l {0}
         run: which g++
 
-      - name: Compile demon (Ubuntu)
+      - name: Compile demon
         shell: bash -l {0}
         run: >
             g++ resources/demon_model/src/demon.cpp
@@ -56,45 +56,23 @@ jobs:
             -I/usr/share/miniconda3/envs/warlock/include
             -lm
 
-      - name: Prepare internal conda envs (Ubuntu)
+      - name: Install demonanalysis into the env
         shell: bash -l {0}
         run: >
-            snakemake
-            --snakefile="workflow/Snakefile"
-            --configfile="tests/test1/config-Ubuntu.yml"
-            --use-conda
-            --conda-create-envs-only
-            --cores 1
-            all
-
-      - name: Install demonanalysis into the env (Ubuntu)
-        shell: bash -l {0}
-        run: |
-            for file in .snakemake/conda/*.yaml; do
-                if [ -f "$file" ]; then
-                    if grep -q "name: warlock-r" "$file"; then
-                        ENVPATH="${file%.yaml}"
-                        break
-                    fi
-                fi
-            done
-            conda deactivate
-            conda activate $ENVPATH
-            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)" || true
-            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)" || true
+            Rscript -e "devtools::install('resources/demonanalysis', upgrade=TRUE)"
 
       # Run the tests sequentially;
       # This could be parallelized in the CI but setting up conda
       # is expensive; its faster to run the tests one-by-one.
 
-      - name: Run the pipeline (test1) (Ubuntu)
+      - name: Run the pipeline (test1)
         shell: bash -l {0}
         run: >
             bash warlock.sh
             --configfile tests/test1/config-Ubuntu.yml
             --environment local
 
-      - name: Check outfiles (test1) (Ubuntu)
+      - name: Check outfiles (test1)
         shell: bash -l {0}
         working-directory: ./tests/test1
         run: >
@@ -105,7 +83,7 @@ jobs:
         shell: bash -l {0}
         run: rm -rf tests/test1/output
 
-      - name: Run the pipeline (test2) (Ubuntu)
+      - name: Run the pipeline (test2)
         shell: bash -l {0}
         run: >
             bash warlock.sh
@@ -113,7 +91,7 @@ jobs:
             --environment local
             --cores 4
 
-      - name: Check outfiles (test2) (Ubuntu)
+      - name: Check outfiles (test2)
         shell: bash -l {0}
         working-directory: ./tests/test2
         run: |
