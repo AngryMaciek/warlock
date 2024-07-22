@@ -1,5 +1,7 @@
+[![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/warlock)
 [![ci-pipeline](https://github.com/AngryMaciek/warlock/workflows/ci-pipeline/badge.svg)](https://github.com/AngryMaciek/warlock/actions?query=workflow%3Aci-pipeline)
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/warlock/badge/master)](https://www.codefactor.io/repository/github/angrymaciek/warlock/overview/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?filepath=notebook.ipynb)
 [![Docker](https://badgen.net/badge/icon/docker?icon=docker&label)](https://hub.docker.com/r/angrymaciek/warlock)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/warlock)](https://github.com/AngryMaciek/warlock/blob/master/LICENSE)
@@ -123,7 +125,7 @@ Running large workflows with hundreds of cluster jobs might take very long; cons
 
 ## Output
 
-After each pipeline run the main output directory will contain three subdirectories: `configfiles`, `simulations` and `logs`. Each simulation run with a specific set of parameters is encoded by a 4-letter code. The first directory contains configuration files for each of the simulation runs; `simulations` contain all _demon_ output files; `logs` keep captured standard output and error streams for the commands.
+After each pipeline run the main output directory will contain four subdirectories: `configfiles`, `simulations`, `analyses` and `logs`. Each simulation run with a specific set of parameters is encoded by a 8-letter code. The first directory contains configuration files for each of the simulation runs; `simulations` contain all _demon_ output files; `analyses` contains plots generated with _demonanalysis_; `logs` keep captured standard output and error streams for the commands. Feel free to run the pipeline and inspect the results yourself in an [interactive jupyter notebook](https://mybinder.org/v2/gh/AngryMaciek/warlock/master?labpath=notebook.ipynb) we prepared.
 
 ## Community guidelines
 For guidelines on how to contribute to the project or report issues, please see [contributing instructions](/CONTRIBUTING.md).  
