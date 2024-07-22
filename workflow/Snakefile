@@ -277,9 +277,6 @@ rule generate_summary_plots:
             "generate_summary_plots.benchmark.log"
         )
 
-    conda:
-        "envs/warlock-r.yml"
-
     shell:
         """
         (mkdir -p {output.DIR_analyses_outdir} \
