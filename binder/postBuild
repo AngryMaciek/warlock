@@ -1,0 +1,4 @@
+#!/bin/bash
+
+set -ex
+Rscript -e "devtools::install_github('robjohnnoble/demonanalysis', upgrade=FALSE)"
